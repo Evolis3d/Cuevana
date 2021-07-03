@@ -10,15 +10,6 @@ public class control : MonoBehaviour
     
     private Rigidbody2D rb;
 
-    [Header("sensores")] 
-    public SpriteRenderer head;
-    public SpriteRenderer leftRCS;
-    public SpriteRenderer rightRCS;
-
-    [Header("escapePod")] 
-    public GameObject prefabPod;
-
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,22 +45,8 @@ public class control : MonoBehaviour
         
         //pausa,break
         if (Input.GetKeyDown(KeyCode.P)) Debug.Break();
+
         
-        //escapePod
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (prefabPod) Instantiate(prefabPod, transform.position + new Vector3(0,0.5f,0), transform.rotation);
-            //pierdo el control de la nave...
-            Destroy(gameObject,3f);
-            this.enabled = false;
-        }
-
-        //sensores
-        head.enabled = Input.GetKey(KeyCode.UpArrow) || Input.GetButton("Thrust");
-        leftRCS.enabled = Input.GetKey(KeyCode.Q) || Input.GetButton("LeftRCS");
-        rightRCS.enabled = Input.GetKey(KeyCode.E) || Input.GetButton("RightRCS");
-
-
         rot = transform.eulerAngles.z;
 
         dir = new Vector2(Mathf.Cos((rot+90f) * Mathf.Deg2Rad), Mathf.Sin((rot+90f) * Mathf.Deg2Rad) );

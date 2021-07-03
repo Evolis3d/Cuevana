@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 4782099092784398548}
   - component: {fileID: 4782099092784398549}
   - component: {fileID: 4782099092784398550}
+  - component: {fileID: 5417398116765316267}
+  - component: {fileID: -7998766160999217151}
   m_Layer: 0
   m_Name: Player
   m_TagString: nave
@@ -231,11 +233,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 3
   vel: 0
+--- !u!114 &5417398116765316267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782099092784398551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5670fc9fea1ec50459d3dc3c195c5ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPod: {fileID: 4879633890386064607, guid: e2095389a45894a48b6307ab94a10208,
+    type: 3}
+  cComp: {fileID: 4782099092784398550}
+--- !u!114 &-7998766160999217151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782099092784398551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6506397c27133bf42a5f7bb31cd2deb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   head: {fileID: 4782099093255776064}
   leftRCS: {fileID: 4782099093186527475}
   rightRCS: {fileID: 4782099092315356908}
-  prefabPod: {fileID: 4879633890386064607, guid: e2095389a45894a48b6307ab94a10208,
-    type: 3}
 --- !u!1 &4782099093186527476
 GameObject:
   m_ObjectHideFlags: 0

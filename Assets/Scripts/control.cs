@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class control : MonoBehaviour
@@ -9,10 +10,12 @@ public class control : MonoBehaviour
     public float vel;
     
     private Rigidbody2D rb;
+    private PolygonCollider2D col;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -21,18 +24,27 @@ public class control : MonoBehaviour
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
         {
             rb.velocity += dir * (thrust * Time.deltaTime);
+            
+            //ñapa
+            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
 
         if ((Input.GetKey(KeyCode.Q)) || Input.GetButton("LeftRCS"))
         {
             var corregido = Vector2.Perpendicular(dir) * -1f;
             rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
+            
+            //ñapa
+            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
         
         if ((Input.GetKey(KeyCode.E)) || Input.GetButton("RightRCS"))
         {
             var corregido = Vector2.Perpendicular(dir);
             rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
+            
+            //ñapa
+            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
 
         vel = rb.velocity.magnitude;
@@ -41,6 +53,9 @@ public class control : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0)
         {
             rb.rotation -= Input.GetAxis("Horizontal");
+            
+            //ñapa
+            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
         
         //pausa,break
@@ -75,5 +90,27 @@ public class control : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         rb.angularVelocity = 0f;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("0gravzone"))
+        {
+            foreach (var point in col.points)
+            {
+                var po = transform.TransformPoint(point);
+                if (!other.OverlapPoint(po)) return;
+            }
+            
+            if (rb.gravityScale !=0f) rb.gravityScale = 0f; //por defecto la nave tiene 0.1
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("0gravzone"))
+        {
+            rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1
+        }
     }
 }

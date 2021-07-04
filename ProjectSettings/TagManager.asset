@@ -6,6 +6,7 @@ TagManager:
   tags:
   - nave
   - suelo
+  - 0gravzone
   layers:
   - Default
   - TransparentFX

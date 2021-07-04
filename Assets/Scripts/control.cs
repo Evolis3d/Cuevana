@@ -103,6 +103,19 @@ public class control : MonoBehaviour
             
             if (rb.gravityScale !=0f) rb.gravityScale = 0f; //por defecto la nave tiene 0.1
         }
+
+        if (other.CompareTag("invertgravzone"))
+        {
+            foreach (var point in col.points)
+            {
+                var po = transform.TransformPoint(point);
+                if (!other.OverlapPoint(po)) return;
+            }
+            
+            if (rb.gravityScale != -0.1f) rb.gravityScale = -0.1f; //por defecto la nave tiene 0.1
+            
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -110,6 +123,11 @@ public class control : MonoBehaviour
         if (other.CompareTag("0gravzone"))
         {
             rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1
+        }
+
+        if (other.CompareTag("invertgravzone"))
+        {
+            rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1 y hacia abajo..
         }
     }
 }

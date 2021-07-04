@@ -60,7 +60,6 @@ public class control : MonoBehaviour
         
         //pausa,break
         if (Input.GetKeyDown(KeyCode.P)) Debug.Break();
-
         
         rot = transform.eulerAngles.z;
 

@@ -32,6 +32,7 @@ public class gravitable : MonoBehaviour
             if (rb.gravityScale !=0f) rb.gravityScale = 0f; //por defecto la nave tiene 0.1
             if (rb.freezeRotation) rb.freezeRotation = false;
             rb.angularVelocity = 10f;  //gira por ahí...
+            return;
         }
 
         if (other.CompareTag("invertgravzone"))
@@ -60,6 +61,7 @@ public class gravitable : MonoBehaviour
             if (!rb.freezeRotation) rb.freezeRotation = true;
             rb.angularVelocity = 0f;
             rb.rotation = 0f;
+            return;
         }
 
         if (other.CompareTag("invertgravzone"))

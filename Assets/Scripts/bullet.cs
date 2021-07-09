@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class bullet : MonoBehaviour
@@ -10,6 +11,7 @@ public class bullet : MonoBehaviour
     private SpriteRenderer rend;
     private bool isMoving = true;
     private Vector2 dir;
+    private disparable_pool sender;
 
     private void Awake()
     {
@@ -31,11 +33,6 @@ public class bullet : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible()
-    {
-        Reset();
-    }
-
     public void Reset()
     {
         col.enabled = false;
@@ -45,20 +42,37 @@ public class bullet : MonoBehaviour
         isMoving = false;
     }
 
-    public void Fire(Vector3 pos = new Vector3(), Vector2 direc = new Vector2())
+    public void Fire(disparable_pool author, Vector3 pos = new Vector3(), Vector2 direc = new Vector2() )
     {
+        if (author.Equals(null)) return;
+
+        sender = author;
         col.enabled = true;
         rend.enabled = true;
         col.transform.position = pos;
         dir = direc;
         isMoving = true;
+
+        StartCoroutine(nameof(RecycleAtSecs), 10);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("suelo")) // por ejemplo
         {
-            Reset();
+            RecycleToPool();
         }
+    }
+
+    private void RecycleToPool()
+    {
+        if (!isMoving) return;
+        if (sender) sender.Recycle(this.gameObject);
+    }
+
+    IEnumerator RecycleAtSecs(float secs = 10f)
+    {
+        yield return new WaitForSeconds(secs);
+        RecycleToPool();
     }
 }

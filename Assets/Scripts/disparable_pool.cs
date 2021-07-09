@@ -30,22 +30,26 @@ public class disparable_pool : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             //ñapa guarra
-            //pool[bulletsLeft-1].transform.SetParent(this.transform);
-            pool[bulletsLeft - 1].transform.position = this.transform.position;
-            Debug.Break();
+            pool[bulletsLeft-1].transform.SetParent(transform);
+            pool[bulletsLeft-1].transform.position = transform.position;
+            pool[bulletsLeft - 1].transform.rotation = transform.rotation;
+            pool[bulletsLeft-1].transform.Translate(0f,0.6f,0f);
             
-            pool[bulletsLeft-1].transform.Translate(0f,0.5f,0f,Space.Self);
-
             var pos = pool[bulletsLeft - 1].transform.position;
             var rot = transform.eulerAngles.z;
             var dir = new Vector2(Mathf.Cos((rot+90f) * Mathf.Deg2Rad), Mathf.Sin((rot+90f) * Mathf.Deg2Rad) );
             
-            pool[bulletsLeft-1].GetComponent<bullet>().Fire(pos,dir);
-            //Debug.Break();
-            
+            pool[bulletsLeft-1].GetComponent<bullet>().Fire(this, pos,dir);
             pool[bulletsLeft-1].transform.SetParent(PoolFolder.transform);
             bulletsLeft--;
-            
         }
     }
+
+    public void Recycle(GameObject bala)
+    {
+        pool[pool.IndexOf(bala)].transform.SetParent(PoolFolder.transform);
+        pool[pool.IndexOf(bala)].transform.GetComponent<bullet>().Reset();
+        bulletsLeft++;
+    }
+    
 }

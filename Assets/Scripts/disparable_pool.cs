@@ -36,7 +36,7 @@ public class disparable_pool : MonoBehaviour
             pool[bulletsLeft-1].transform.Translate(0f,0.6f,0f);
             
             var pos = pool[bulletsLeft - 1].transform.position;
-            var rot = transform.eulerAngles.z;
+            var rot = transform.rotation.z;
             var dir = new Vector2(Mathf.Cos((rot+90f) * Mathf.Deg2Rad), Mathf.Sin((rot+90f) * Mathf.Deg2Rad) );
             
             pool[bulletsLeft-1].GetComponent<bullet>().Fire(this, pos,dir);

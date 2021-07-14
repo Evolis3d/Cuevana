@@ -28,7 +28,7 @@ public class control : MonoBehaviour
             if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
 
-        if ((Input.GetKey(KeyCode.Q)) || Input.GetButton("LeftRCS"))
+        if ((Input.GetKey(KeyCode.Q)) || Input.GetAxisRaw("RCS") <= -1)
         {
             var corregido = Vector2.Perpendicular(dir) * -1f;
             rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
@@ -37,7 +37,7 @@ public class control : MonoBehaviour
             if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
         
-        if ((Input.GetKey(KeyCode.E)) || Input.GetButton("RightRCS"))
+        if ((Input.GetKey(KeyCode.E)) || Input.GetAxisRaw("RCS") >= 1)
         {
             var corregido = Vector2.Perpendicular(dir);
             rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);

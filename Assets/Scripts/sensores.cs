@@ -11,7 +11,7 @@ public class sensores : MonoBehaviour
     {
         //sensores
         head.enabled = Input.GetKey(KeyCode.UpArrow) || Input.GetButton("Thrust");
-        leftRCS.enabled = Input.GetKey(KeyCode.Q) || Input.GetButton("LeftRCS");
-        rightRCS.enabled = Input.GetKey(KeyCode.E) || Input.GetButton("RightRCS");
+        leftRCS.enabled = Input.GetKey(KeyCode.Q) || Input.GetAxisRaw("RCS") <= -1;
+        rightRCS.enabled = Input.GetKey(KeyCode.E) || Input.GetAxisRaw("RCS") >= 1;
     }
 }

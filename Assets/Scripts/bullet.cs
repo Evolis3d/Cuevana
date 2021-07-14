@@ -56,6 +56,17 @@ public class bullet : MonoBehaviour
         StartCoroutine(nameof(RecycleAtSecs), 10);
     }
 
+    public void SetDir(Vector2 newDir)
+    {
+        dir = newDir;
+    }
+
+    public Vector2 GetDir()
+    {
+        return dir;
+    }
+
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.CompareTag("suelo")) // por ejemplo

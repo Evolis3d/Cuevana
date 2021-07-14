@@ -8,6 +8,7 @@ TagManager:
   - suelo
   - 0gravzone
   - invertgravzone
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - bullets
   - 
   - 
   - 

@@ -1,25 +1,27 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class shieldable : MonoBehaviour
 {
     public GameObject prefabShield;
     public bool shieldOn=false;
-
+    public float energy;
+    
     private GameObject shield;
     private SpriteRenderer ShieldRend;
-    Color modo1 = Color.cyan * new Color(0,1,1,0.25f);
-    Color modo2 = Color.red * new Color(1,0,0,0.25f);
-    Color modo3 = Color.green * new Color(0,1,0,0.25f);
+    Color modo1 = Color.cyan * new Color(0,1,1,0.25f);   //Barrier
+    Color modo2 = Color.red * new Color(1,0,0,0.25f);    //Absorb
+    Color modo3 = Color.green * new Color(0,1,0,0.25f);  //Reflect
     
-    private int currentMode = 1;
+    private int currentMode = 0;
 
     private void Start()
     {
         shield = Instantiate(prefabShield, transform.position, Quaternion.identity);
         ShieldRend = shield.GetComponent<SpriteRenderer>();
         shield.transform.SetParent(transform);
-        SetMode(0);
-
+        SetMode(currentMode);
+        energy = 100f; //100%
         ToggleShield(false);
     }
 
@@ -68,4 +70,49 @@ public class shieldable : MonoBehaviour
         sComp.enabled = onOff;
     }
 
+
+    //veamos si soporta el trigger del children...
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (currentMode)
+        {
+            //Barrier
+            case 0:
+            {
+                if (other.CompareTag("bullet"))
+                {
+                    energy -= 10f;
+                    energy = Mathf.Clamp(energy, 0f, 100f);
+                    var bala = other.GetComponent<bullet>();
+                    bala.Reset();
+                }
+                break;
+            }
+            //Absorb
+            case 1:
+            {
+                if (other.CompareTag("bullet"))
+                {
+                    energy += 5f;
+                    energy = Mathf.Clamp(energy, 0f, 100f);
+                    var bala = other.GetComponent<bullet>();
+                    bala.Reset();
+                }
+                break;
+            }
+            //Reflect
+            case 2:
+            {
+                if (other.CompareTag("bullet"))
+                {
+                    energy -= 25f;
+                    energy = Mathf.Clamp(energy, 0f, 100f);
+                    var bala = other.GetComponent<bullet>();
+                    var ndir = bala.GetDir();
+                    bala.SetDir(Vector2.Reflect(ndir,ndir.normalized));
+                }
+                break;
+            }
+        }
+    }
 }

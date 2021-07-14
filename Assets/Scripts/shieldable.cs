@@ -28,14 +28,19 @@ public class shieldable : MonoBehaviour
     {
         if (Input.GetButton("Shield"))
         {
-            if (shieldOn!=true) ToggleShield(true);
-        } else if (Input.GetButtonUp("Shield"))
+            if (shieldOn != true) ToggleShield(true);
+        }else if (Input.GetButtonUp("Shield"))
         {
             if (shieldOn != false) ToggleShield(false);
         }
-        //switches between shield modes
-        //if (Input.GetButtonDown())
-        
+
+        if (Input.GetButtonDown("ShieldMode"))
+        {
+            currentMode++;
+            SetMode(currentMode);
+        }
+
+
     }
 
     private void SetMode(int mode)

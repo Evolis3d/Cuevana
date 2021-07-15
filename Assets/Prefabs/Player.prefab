@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4782099092784398550}
   - component: {fileID: 5417398116765316267}
   - component: {fileID: -7998766160999217151}
-  - component: {fileID: -2928890747843311464}
+  - component: {fileID: 3484103335560212413}
   m_Layer: 0
   m_Name: Player
   m_TagString: nave
@@ -264,7 +264,7 @@ MonoBehaviour:
   head: {fileID: 4782099093255776064}
   leftRCS: {fileID: 4782099093186527475}
   rightRCS: {fileID: 4782099092315356908}
---- !u!114 &-2928890747843311464
+--- !u!114 &3484103335560212413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabShield: {fileID: 3573266262399188718, guid: f381bf859abe21548966c7ae513f3765,
     type: 3}
+  shieldOn: 0
+  energy: 0
 --- !u!1 &4782099093186527476
 GameObject:
   m_ObjectHideFlags: 0

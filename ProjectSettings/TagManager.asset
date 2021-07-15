@@ -9,6 +9,7 @@ TagManager:
   - 0gravzone
   - invertgravzone
   - bullet
+  - water
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,7 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
-        _player = FindObjectOfType<control>().gameObject;
+        _player = FindObjectOfType<control_nave>().gameObject;
         _camComp = FindObjectOfType<cameraFollow>();
     }
 

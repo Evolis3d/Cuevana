@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class control : MonoBehaviour
+public class control_nave : MonoBehaviour
 {
     private float rot;
     private Vector2 dir;

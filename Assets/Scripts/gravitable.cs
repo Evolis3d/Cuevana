@@ -1,6 +1,4 @@
-﻿using System;
-using System.Timers;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D),typeof(Collider2D))]
 public class gravitable : MonoBehaviour

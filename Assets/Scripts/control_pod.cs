@@ -6,7 +6,7 @@ public class control_pod : MonoBehaviour
     public GameObject prefabPod;
 
     [Header("Control Principal")] 
-    public control cComp;
+    public control_nave cComp;
     
     // Start is called before the first frame update
     void Start()

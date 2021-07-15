@@ -18,6 +18,9 @@ public class Game : MonoBehaviour
     {
         if (!_player && Input.GetKeyDown(KeyCode.F1))
         {
+            var playerito = FindObjectOfType<control_minion>();
+            if (playerito) Destroy(playerito.gameObject);
+            
             _player = Instantiate(Player, Vector3.zero, Quaternion.identity);
             _camComp.SetTarget(_player.transform);
         }

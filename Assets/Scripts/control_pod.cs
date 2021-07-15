@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class control_pod : MonoBehaviour
 {
@@ -7,12 +8,6 @@ public class control_pod : MonoBehaviour
 
     [Header("Control Principal")] 
     public control_nave cComp;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,4 +21,5 @@ public class control_pod : MonoBehaviour
             cComp.enabled = false;
         }
     }
+
 }

@@ -12,9 +12,13 @@ public class pod : MonoBehaviour
     private float rot;
     private Vector2 dir;
 
+    private GameObject miniYo;
+    private cameraFollow _follow;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _follow = Camera.main.GetComponent<cameraFollow>();
     }
 
     private void Start()
@@ -34,7 +38,8 @@ public class pod : MonoBehaviour
             rb.velocity = Vector2.zero;
             
             //explota e instancia un paracaidista...
-            if (prefabMinion) Instantiate(prefabMinion, transform.position, Quaternion.identity);
+            if (prefabMinion) miniYo = Instantiate(prefabMinion, transform.position, Quaternion.identity);
+            _follow.SetTarget(miniYo.transform);
             Destroy(gameObject);
         }
         else

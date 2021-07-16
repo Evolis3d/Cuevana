@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4506115898022542198}
   - component: {fileID: 4506115898022542199}
   - component: {fileID: 4506115898022542195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bascula
   m_TagString: Untagged
   m_Icon: {fileID: 0}

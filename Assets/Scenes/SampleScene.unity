@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 67323278}
   - component: {fileID: 67323280}
   - component: {fileID: 67323279}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (2)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 123573318}
   - component: {fileID: 123573320}
   - component: {fileID: 123573319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (8)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 302738876}
   - component: {fileID: 302738875}
   - component: {fileID: 302738874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -526,9 +526,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 416710405}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mapa-STATIC
-  m_TagString: Untagged
+  m_TagString: suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 431312090}
   - component: {fileID: 431312092}
   - component: {fileID: 431312091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (6)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 432045426}
   - component: {fileID: 432045428}
   - component: {fileID: 432045427}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (1)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 449342474}
   - component: {fileID: 449342476}
   - component: {fileID: 449342475}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (5)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 546112746}
   - component: {fileID: 546112745}
   - component: {fileID: 546112744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bloque
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 746513935}
   - component: {fileID: 746513937}
   - component: {fileID: 746513936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (4)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   - component: {fileID: 854549052}
   - component: {fileID: 854549054}
   - component: {fileID: 854549053}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (7)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 1127062226}
   - component: {fileID: 1127062228}
   - component: {fileID: 1127062227}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bloque (2)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 1507845350}
   - component: {fileID: 1507845352}
   - component: {fileID: 1507845351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bloque (3)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 1861820124}
   - component: {fileID: 1861820126}
   - component: {fileID: 1861820125}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bloque (1)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1722,7 +1722,7 @@ GameObject:
   - component: {fileID: 1867053429}
   - component: {fileID: 1867053431}
   - component: {fileID: 1867053430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pista (3)
   m_TagString: suelo
   m_Icon: {fileID: 0}

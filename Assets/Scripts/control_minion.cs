@@ -1,8 +1,6 @@
-﻿using System;
-using System.Net;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class control_minion : MonoBehaviour
+public class control_minion : Interactivo
 {
     private SpriteRenderer _spr;
     private Animator _anim;

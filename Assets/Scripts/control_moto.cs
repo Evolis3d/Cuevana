@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class control_moto : MonoBehaviour
+public class control_moto : Interactivo
 {
     [Header("Motocicleta")] 
     private Vector2 dir;

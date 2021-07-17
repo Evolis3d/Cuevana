@@ -5,6 +5,7 @@ public class control_moto : Interactivo
 {
     [Header("Motocicleta")] 
     private Vector2 dir;
+    private float lado,lastlado;
     public float thrust = 3f;
     public float vel;
     
@@ -46,9 +47,14 @@ public class control_moto : Interactivo
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            var lado = Input.GetAxisRaw("Horizontal");
-            _spr.flipX = lado <= -1;
-            //dir = dir * lado; // transform.right;  //Vector2.left * lado;
+            lado = Input.GetAxisRaw("Horizontal");
+
+            if (lado != lastlado)
+            {
+                if (lado >= 1) _spr.flipX = false;
+                if (lado <= -1)_spr.flipX = true;
+                lastlado = lado;
+            }
         }
     }
 

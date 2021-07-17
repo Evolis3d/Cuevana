@@ -67,20 +67,24 @@ public class control_nave : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.CompareTag("suelo"))
+        var tago = other.transform.tag;
+        switch (tago)
         {
-            if (vel > 1f)
-            {
-                Destroy(gameObject);
-            } else if (vel > 0.5f)
-            {
-                var choque = other.GetContact(0).normal; //.contacts[0].normal;
-                var rebote = Vector2.Reflect(rb.velocity,choque);
-                rb.velocity = rebote;
+            case "base" : case "suelo":
+                //
+                if (vel > 1f)
+                {
+                    Destroy(gameObject);
+                } else if (vel > 0.5f)
+                {
+                    var choque = other.GetContact(0).normal; 
+                    var rebote = Vector2.Reflect(rb.velocity,choque);
+                    rb.velocity = rebote;
 
-                StartCoroutine(nameof(resetRebote));
-                //rb.angularVelocity = 0f;
-            }
+                    StartCoroutine(nameof(resetRebote));
+                }
+                //
+                break;
         }
     }
 

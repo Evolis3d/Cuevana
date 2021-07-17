@@ -7,17 +7,22 @@ public class Game : MonoBehaviour
 
     //para que la camara siga siempre a una nave...
     private cameraFollow _camComp;
+
+    private points_of_interest _poiComp;
     
     private void Awake()
     {
         _player = FindObjectOfType<control_nave>().gameObject;
         _camComp = FindObjectOfType<cameraFollow>();
+        _poiComp = GetComponent<points_of_interest>();
     }
 
     void Update()
     {
         if (!_player && Input.GetKeyDown(KeyCode.F1))
         {
+            _poiComp.RefreshPOI();
+            
             var playerito = FindObjectOfType<control_minion>();
             if (playerito) Destroy(playerito.gameObject);
             

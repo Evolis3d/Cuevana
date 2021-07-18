@@ -6,7 +6,7 @@ using UnityEngine;
 public class points_of_interest : MonoBehaviour
 {
     [SerializeField] private List<Interactivo> puntosDeInteres;
-    private int _currentPointed; 
+    private int _currentPointed=0; 
         
     private void Awake()
     {
@@ -15,13 +15,26 @@ public class points_of_interest : MonoBehaviour
 
     public Transform GiveNextPOI()
     {
-        if (!puntosDeInteres[_currentPointed]) RefreshPOI();
+        if (puntosDeInteres==null || puntosDeInteres.Count <1) 
+        {
+            RefreshPOI();
+            return null;
+        }
         
-        var poi = puntosDeInteres[_currentPointed].transform;
+        var poi = puntosDeInteres[_currentPointed];
+        if (!poi && _currentPointed == puntosDeInteres.Count- 1)
+        {
+            RefreshPOI();
+            return null;
+        } else if (!poi)
+        {
+            _currentPointed++;
+            GiveNextPOI();
+        }
 
         _currentPointed += 1 % puntosDeInteres.Count;
         
-        return poi;
+        return poi.transform;
     }
 
     public void RefreshPOI()

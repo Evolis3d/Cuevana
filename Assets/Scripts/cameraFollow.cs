@@ -28,6 +28,7 @@ public class cameraFollow : MonoBehaviour
             var pos = Vector3.Lerp(transform.position, newpos, factor * Time.deltaTime);
 
             transform.position = pos;
+
             //guardo esta posicion en el fallbackPOI
             _fallbackPOI.transform.position = Target.position;
         }
@@ -39,8 +40,11 @@ public class cameraFollow : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F10))
         {
+            //guardo esta posicion en el fallbackPOI
+            if (Target) _fallbackPOI.transform.position = Target.position;
+
             var tg = _poi.GiveNextPOI();
-            if (tg) SetTarget(tg);
+            SetTarget(tg ? tg : _fallbackPOI.transform);
         }
     }
 

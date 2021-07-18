@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -21,6 +22,9 @@ public class points_of_interest : MonoBehaviour
             return null;
         }
         
+        //borra los que estén missing
+        puntosDeInteres.RemoveAll(x => !x);
+        
         var poi = puntosDeInteres[_currentPointed];
         if (!poi && _currentPointed == puntosDeInteres.Count- 1)
         {
@@ -28,11 +32,11 @@ public class points_of_interest : MonoBehaviour
             return null;
         } else if (!poi)
         {
-            _currentPointed++;
+            _currentPointed = ( _currentPointed + 1 + puntosDeInteres.Count) % puntosDeInteres.Count;
             GiveNextPOI();
         }
 
-        _currentPointed += 1 % puntosDeInteres.Count;
+        _currentPointed = ( _currentPointed + 1 + puntosDeInteres.Count) % puntosDeInteres.Count;
         
         return poi.transform;
     }
@@ -46,7 +50,20 @@ public class points_of_interest : MonoBehaviour
         {
             puntosDeInteres.Add(el);
         }
+        
+        OrdenaPreferentes();
+        
         _currentPointed = 0;
+    }
+
+    public void OrdenaPreferentes()
+    {
+        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_minion ? 0 : 1)
+            .ToList();
+        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_moto ? 0 : 1)
+            .ToList();
+        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_nave ? 0 : 1)
+            .ToList();
     }
 
 }

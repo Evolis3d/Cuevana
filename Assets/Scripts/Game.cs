@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Game : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
-        _player = FindObjectOfType<control_nave>().gameObject;
+        var nao = FindObjectOfType<control_nave>();
+        if (nao) _player = nao.gameObject;
         _camComp = FindObjectOfType<cameraFollow>();
         _poiComp = GetComponent<points_of_interest>();
+    }
+
+    void Start()
+    {
+        _camComp.SetTarget(_player.transform);
     }
 
     void Update()

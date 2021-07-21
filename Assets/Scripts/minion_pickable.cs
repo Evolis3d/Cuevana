@@ -1,8 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class minion_pickable : MonoBehaviour
 {
+    public GameObject waterPrefab;
+    
     private Vector2 _dir;
     private Animator _anim;
     private SpriteRenderer _spr; 
@@ -46,10 +47,19 @@ public class minion_pickable : MonoBehaviour
         transform.Translate(_dir.x * Time.deltaTime,0,0);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("nave"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("nave"))
+        if (other.CompareTag("water"))
         {
+            if (waterPrefab) Instantiate(waterPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6508603043224110928}
   - component: {fileID: 6508603043224110940}
   - component: {fileID: 6508603043224110941}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Helicoptero_playable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class control_heli : Interactivo
@@ -21,7 +20,7 @@ public class control_heli : Interactivo
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetButton("Thrust"))
         {
             _rb.velocity+= Vector2.up * (thrust * Time.deltaTime);
         }
@@ -38,7 +37,7 @@ public class control_heli : Interactivo
         //if (_steer != 0) _rb.gravityScale = caida;
         
         _rb.velocity = new Vector2(-dir.x * 0.25f, _rb.velocity.y);
-        Debug.Log(_rb.velocity.magnitude);
+        //Debug.Log(_rb.velocity.magnitude);
         
         //pausa,break
         if (Input.GetKeyDown(KeyCode.P)) Debug.Break();

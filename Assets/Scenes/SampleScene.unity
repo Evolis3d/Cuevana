@@ -417,12 +417,12 @@ GameObject:
   m_Layer: 0
   m_Name: SafeZone
   m_TagString: safezone
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!60 &406060312
-PolygonCollider2D:
+--- !u!61 &406060312
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -431,10 +431,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.27085114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -444,12 +444,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.09375, y: 0.5625}
-      - {x: -1.09375, y: 0}
-      - {x: 1.09375, y: 0}
-      - {x: 1.09375, y: 0.5625}
+  serializedVersion: 2
+  m_Size: {x: 8, y: 0.5417023}
+  m_EdgeRadius: 0
 --- !u!212 &406060313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1000,6 +997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782099092784398551, guid: 13811b1275c257640846e27b2a4fddb7,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4782099092784398551, guid: 13811b1275c257640846e27b2a4fddb7,
         type: 3}

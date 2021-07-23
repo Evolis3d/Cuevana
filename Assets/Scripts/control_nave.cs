@@ -7,6 +7,8 @@ public class control_nave : Interactivo
     private Vector2 dir;
     public float thrust = 1.3f;
     public float vel;
+
+    public bool landed; 
     
     private Rigidbody2D rb;
     private PolygonCollider2D col;
@@ -20,6 +22,20 @@ public class control_nave : Interactivo
     // Update is called once per frame
     void Update()
     {
+        //aterrizar
+        if (vel != 0f)
+        {
+            landed = false;
+        }
+        else
+        {
+            var bottom = transform.position - new Vector3(0, 0.2f, 0);
+            var hit = Physics2D.Raycast(bottom, -transform.up, 0.2f, LayerMask.GetMask("suelos"));
+            Debug.DrawLine(bottom, bottom - new Vector3(0, 0.2f, 0), Color.magenta);
+            landed = (hit.collider != null);
+        }
+        //
+
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
         {
             rb.velocity += dir * (thrust * Time.deltaTime);

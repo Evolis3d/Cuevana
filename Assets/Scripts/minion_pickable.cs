@@ -22,29 +22,33 @@ public class minion_pickable : MonoBehaviour
         var hit = Physics2D.Linecast(transform.position-maxdist,transform.position+maxdist,LayerMask.GetMask("naves"));
 
         //Debug.Log(hit.collider);
-        
+
         if (hit.collider != null && hit.collider.CompareTag("nave"))
         {
-            var n = transform.InverseTransformPoint(hit.transform.position).x;
-            if (n < 0)
+            var naveComp = hit.transform.GetComponent<control_nave>();
+            if (naveComp.landed)
             {
-                _dir = Vector2.left;
-            }
-            else if (n > 0)
-            {
-                _dir = Vector2.right;
-            }
-            
-            _anim.SetBool("isMoving",true);
-            _spr.flipX = (_dir.x==1f);
-        }
-        else
-        {
-            _dir = Vector2.zero;
-            _anim.SetBool("isMoving",false);
-        }
+                var n = transform.InverseTransformPoint(hit.transform.position).x;
+                if (n < 0)
+                {
+                    _dir = Vector2.left;
+                }
+                else if (n > 0)
+                {
+                    _dir = Vector2.right;
+                }
 
-        transform.Translate(_dir.x * Time.deltaTime,0,0);
+                _anim.SetBool("isMoving", true);
+                _spr.flipX = (_dir.x == 1f);
+            }
+            else
+            {
+                _dir = Vector2.zero;
+                _anim.SetBool("isMoving", false);
+            }
+
+            transform.Translate(_dir.x * Time.deltaTime, 0, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

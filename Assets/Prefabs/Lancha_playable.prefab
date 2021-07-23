@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3979216170747836866}
   - component: {fileID: 1007265602374279873}
   - component: {fileID: 8690574046312205812}
-  - component: {fileID: 3836373699959217857}
   - component: {fileID: 6276915301704579254}
+  - component: {fileID: 3860712453918024791}
   m_Layer: 0
   m_Name: Lancha_playable
   m_TagString: Untagged
@@ -105,32 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3836373699959217857
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7000071197221083260}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06289363, y: 0.10854843}
-  m_SpriteTilingProperty:
-    border: {x: 0.125, y: 0, z: 0, w: 0.15625}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.84375, y: 0.375}
-    newSize: {x: 0.27, y: 0.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.71796274, y: 0.21709687}
-  m_EdgeRadius: 0
 --- !u!114 &6276915301704579254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +121,32 @@ MonoBehaviour:
   vel: 0
   prefabMinion: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
     type: 3}
+--- !u!60 &3860712453918024791
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000071197221083260}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.84375, y: 0.375}
+    newSize: {x: 0.27, y: 0.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.296875, y: 0.1875}
+      - {x: -0.296875, y: 0}
+      - {x: 0.421875, y: 0}
+      - {x: 0.421875, y: 0.1875}

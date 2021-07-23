@@ -11,6 +11,7 @@ TagManager:
   - bullet
   - water
   - base
+  - safezone
   layers:
   - Default
   - TransparentFX

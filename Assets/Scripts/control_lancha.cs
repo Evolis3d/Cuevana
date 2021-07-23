@@ -85,6 +85,7 @@ public class control_lancha : Interactivo
     {
         yield return new WaitForSeconds(0.5f);
         _rb.angularVelocity = 0f;
+        _rb.rotation = 0f;
         _rb.freezeRotation = true;
     }
 

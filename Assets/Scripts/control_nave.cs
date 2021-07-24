@@ -22,8 +22,10 @@ public class control_nave : Interactivo
     // Update is called once per frame
     void Update()
     {
-        //aterrizar
-        if (vel != 0f)
+        vel = rb.velocity.magnitude;
+        
+        //aterrizar 
+        if (vel > 0.1f)
         {
             landed = false;
         }
@@ -32,7 +34,7 @@ public class control_nave : Interactivo
             var bottom = transform.position - new Vector3(0, 0.2f, 0);
             var hit = Physics2D.Raycast(bottom, -transform.up, 0.2f, LayerMask.GetMask("suelos"));
             Debug.DrawLine(bottom, bottom - new Vector3(0, 0.2f, 0), Color.magenta);
-            landed = (hit.collider != null);
+            landed = (hit.collider != null && vel < 0.1f);
         }
         //
 
@@ -61,8 +63,6 @@ public class control_nave : Interactivo
             //ñapa
             if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
         }
-
-        vel = rb.velocity.magnitude;
 
 
         if (Input.GetAxis("Horizontal") != 0)

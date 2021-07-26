@@ -14,9 +14,13 @@ public class control_pod : MonoBehaviour
         //escapePod
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GameMode.Lives++;
+            
             if (prefabPod) Instantiate(prefabPod, transform.position + new Vector3(0,0.5f,0), transform.rotation);
             //pierdo el control de la nave...
             Destroy(gameObject,3f);
+            GameMode.PrisonersKilled += GameMode.PrisonersAboard;
+            GameMode.PrisonersAboard = 0;
             cComp.enabled = false;
         }
     }

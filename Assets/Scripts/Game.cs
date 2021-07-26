@@ -30,7 +30,11 @@ public class Game : MonoBehaviour
             _poiComp.RefreshPOI();
             
             var playerito = FindObjectOfType<control_minion>();
-            if (playerito) Destroy(playerito.gameObject);
+            if (playerito)
+            {
+                GameMode.Lives--; 
+                Destroy(playerito.gameObject);
+            }
             
             _player = Instantiate(Player, Vector3.zero, Quaternion.identity);
             _camComp.SetTarget(_player.transform);

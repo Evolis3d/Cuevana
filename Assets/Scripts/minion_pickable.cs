@@ -55,6 +55,7 @@ public class minion_pickable : MonoBehaviour
     {
         if (other.collider.CompareTag("nave"))
         {
+            GameMode.PrisonersAboard++;
             Destroy(this.gameObject);
         }
     }

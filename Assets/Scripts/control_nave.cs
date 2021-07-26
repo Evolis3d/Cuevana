@@ -35,7 +35,12 @@ public class control_nave : Interactivo
             var hit = Physics2D.Raycast(bottom, -transform.up, 0.2f, LayerMask.GetMask("suelos"));
             Debug.DrawLine(bottom, bottom - new Vector3(0, 0.2f, 0), Color.magenta);
             landed = (hit.collider != null && vel < 0.1f);
+            
         }
+        //
+        
+        //metricas del modo de juego
+        GameMode.PlayerLanded = landed;
         //
 
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
@@ -90,6 +95,10 @@ public class control_nave : Interactivo
                 //
                 if (vel > 1f)
                 {
+                    //se destruye la nave
+                    GameMode.Lives--;
+                    GameMode.PrisonersKilled += GameMode.PrisonersAboard;
+                    GameMode.PrisonersAboard = 0;
                     Destroy(gameObject);
                 } else if (vel > 0.5f)
                 {
@@ -132,9 +141,7 @@ public class control_nave : Interactivo
             }
             
             if (rb.gravityScale != -0.1f) rb.gravityScale = -0.1f; //por defecto la nave tiene 0.1
-            
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D other)

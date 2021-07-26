@@ -26,6 +26,7 @@ public class minion_rescued : MonoBehaviour
             
             if  (dist<0.1)
             {
+                GameMode.PrisonersRescued++;
                 Destroy(gameObject);
             }
             else

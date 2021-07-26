@@ -21,6 +21,17 @@ public class GameMode : MonoBehaviour
     public static int PrisonersLeft;
     public static int PrisonersKilled;
 
+    [Header("Info")] 
+    [SerializeField] private bool _AllRescued;
+    [SerializeField] private bool _PlayerLanded;
+    [SerializeField] private int _Lives;
+    [SerializeField] private int _TotalPrisoners;
+    [SerializeField] private int _PrisonersNeeded;
+    [SerializeField] private int _PrisonersRescued;
+    [SerializeField] private int _PrisonersAboard;
+    [SerializeField] private int _PrisonersLeft;
+    [SerializeField] private int _PrisonersKilled;
+
     private void Start()
     {
         _startTime = new DateTime();
@@ -36,6 +47,17 @@ public class GameMode : MonoBehaviour
         AllRescued = PrisonersRescued > PrisonersNeeded;
         
         if (Lives<1) GameOver(0);
+        
+        //relleno info privada
+        _AllRescued = AllRescued;
+        _PlayerLanded = PlayerLanded;
+        _Lives = Lives;
+        _TotalPrisoners = TotalPrisoners;
+        _PrisonersNeeded = PrisonersNeeded;
+        _PrisonersRescued = PrisonersRescued;
+        _PrisonersAboard = PrisonersAboard;
+        _PrisonersLeft = PrisonersLeft;
+        _PrisonersKilled = PrisonersKilled;
     }
 
     private void GameOver(int result)

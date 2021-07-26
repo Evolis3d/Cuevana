@@ -23,7 +23,10 @@ public class safezone : MonoBehaviour
         
         if (_timer > _freqspawn)
         {
-            if (prefabRescued) Instantiate(prefabRescued, _posnave, Quaternion.identity);
+            if (prefabRescued) { 
+                Instantiate(prefabRescued, _posnave, Quaternion.identity);
+                GameMode.PrisonersAboard--;
+            }
             _timer = 0f;
         }
         else
@@ -37,7 +40,7 @@ public class safezone : MonoBehaviour
         if (other.CompareTag("nave"))
         {
             var naveComp = other.transform.GetComponent<control_nave>();
-            _naveLanded = naveComp.landed;
+            _naveLanded = GameMode.PlayerLanded;
             _posnave = other.transform.position;
         }
     }

@@ -38,6 +38,12 @@ public class Game : MonoBehaviour
             
             _player = Instantiate(Player, Vector3.zero, Quaternion.identity);
             _camComp.SetTarget(_player.transform);
+        } else if (_player && Input.GetKeyDown(KeyCode.F1))
+        {
+            var _rb = _player.GetComponent<Rigidbody2D>();
+            _rb.velocity = Vector2.zero;
+            _rb.rotation = 0f;
+            _player.transform.position = Vector3.zero;
         }
     }
 }

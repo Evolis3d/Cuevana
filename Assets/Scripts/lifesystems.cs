@@ -19,26 +19,21 @@ public class lifesystems : MonoBehaviour
         _currentHealth = health;
     }
 
-    private void Update()
-    {
-        if (!prefabLifebar) return;
-        
-        //testeo, quitar luego
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            var healthLeft = _currentHealth / health;
-            _infoComp.Show(healthLeft, Vector2.up);
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!prefabLifebar) return;
         
         if (other.collider.CompareTag("bullet"))
         {
+            var bull = other.transform.GetComponent<bullet>();
+            var dmg = bull.damage;
+            _currentHealth -= dmg;
+            _currentHealth = Mathf.Clamp(_currentHealth, 0f, health);
             var healthLeft = _currentHealth / health;
-            _infoComp.Show(health, Vector2.up);
+            _infoComp.Show(healthLeft, Vector2.up);
+            bull.RecycleToPool();
+            
+            if (_currentHealth == 0f) Destroy(gameObject);
         }
     }
 }

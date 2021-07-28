@@ -75,7 +75,7 @@ public class bullet : MonoBehaviour
         }
     }
 
-    private void RecycleToPool()
+    public void RecycleToPool()
     {
         if (!isMoving) return;
         if (sender) sender.Recycle(this.gameObject);

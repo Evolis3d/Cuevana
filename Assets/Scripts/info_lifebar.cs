@@ -18,7 +18,7 @@ public class info_lifebar : MonoBehaviour
         _rend.enabled = false;
     }
 
-    public void Show(float amount, Vector2 pos = new Vector2(), float duration = 1f)
+    public void Show(float amount, Vector2 pos = new Vector2(), float duration = 2f)
     {
         _rend.enabled = true;
         amount = Mathf.Clamp01(amount);
@@ -32,6 +32,6 @@ public class info_lifebar : MonoBehaviour
     private IEnumerator _showLifeBar(float secs = 1f)
     {
         yield return new WaitForSeconds(secs);
-        _rend.enabled = !_rend.enabled;
+        _rend.enabled = false;
     }
 }

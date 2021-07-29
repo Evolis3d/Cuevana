@@ -32,8 +32,14 @@ public class lifesystems : MonoBehaviour
             var healthLeft = _currentHealth / health;
             _infoComp.Show(healthLeft, Vector2.up);
             bull.RecycleToPool();
-            
-            if (_currentHealth == 0f) Destroy(gameObject);
+
+            if (_currentHealth == 0f)
+            {
+                //si tiene escombros y spawn de prisioneros, lo activamos
+                var _escombros = GetComponent<minion_spawnpoint>();
+                if (_escombros) _escombros.Spawn();
+                Destroy(gameObject);
+            }
         }
     }
 }

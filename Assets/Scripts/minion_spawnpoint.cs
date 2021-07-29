@@ -7,7 +7,7 @@ public class minion_spawnpoint : MonoBehaviour
     public GameObject prefabPickables;
     public int amount = 3;
 
-    private void OnDestroy()
+    public void Spawn()
     {
         if (crashSprite)
         {

@@ -36,7 +36,7 @@ public class Game : MonoBehaviour
                 Destroy(playerito.gameObject);
             }
             
-            _player = Instantiate(Player, Vector3.zero, Quaternion.identity);
+            _player = Instantiate(Player, GameMode.CurrentCheckPoint, Quaternion.identity);
             _camComp.SetTarget(_player.transform);
         } else if (_player && Input.GetKeyDown(KeyCode.F1))
         {

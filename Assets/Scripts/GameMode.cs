@@ -12,6 +12,7 @@ public class GameMode : MonoBehaviour
     [Header("Nave")]
     public static bool PlayerLanded;
     public static int Lives;
+    public static Vector2 CurrentCheckPoint;
 
     [Header("Prisioneros")]
     public static int TotalPrisoners;
@@ -40,6 +41,8 @@ public class GameMode : MonoBehaviour
         //
         _startTime = DateTime.Now;
         Lives = 3;
+        //
+        CurrentCheckPoint = Vector2.zero;
     }
 
     private void Update()

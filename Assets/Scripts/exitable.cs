@@ -6,9 +6,12 @@ public class exitable : MonoBehaviour
     private control_nave _control;
     private bool _canLeave;
 
+    private Game _gameComp;
+
     private void Awake()
     {
         _control = GetComponent<control_nave>();
+        _gameComp = FindObjectOfType<Game>();
     }
 
     void Update()
@@ -29,9 +32,10 @@ public class exitable : MonoBehaviour
                 Destroy(gameObject.GetComponent<exitable>());
                 gameObject.GetComponent<Rigidbody2D>().simulated = false;
                 gameObject.GetComponent<Collider2D>().isTrigger = true;
+                //Destroy(gameObject);
                 
                 var miniYo = Instantiate(prefabPlayable, navePos, Quaternion.identity);
-                //Destroy(gameObject);
+                _gameComp.FocusOn(miniYo.transform);
                 
                 //Debug.Log("Sale del vehiculo!");
                 //Debug.Break();

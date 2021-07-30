@@ -46,4 +46,10 @@ public class Game : MonoBehaviour
             _player.transform.position = Vector3.zero;
         }
     }
+
+    public void FocusOn(Transform target)
+    {
+        if (!target) return;
+        _camComp.SetTarget(target);
+    }
 }

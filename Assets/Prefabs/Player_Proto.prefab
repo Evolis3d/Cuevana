@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4782099092784398550}
   - component: {fileID: 5417398116765316267}
   - component: {fileID: -7998766160999217151}
+  - component: {fileID: 8381685204192067093}
   m_Layer: 11
   m_Name: Player_Proto
   m_TagString: nave
@@ -264,6 +265,18 @@ MonoBehaviour:
   head: {fileID: 4782099093255776064}
   leftRCS: {fileID: 4782099093186527475}
   rightRCS: {fileID: 4782099092315356908}
+--- !u!114 &8381685204192067093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782099092784398551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f211bbfffda175948988ec0689dd4d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4782099093186527476
 GameObject:
   m_ObjectHideFlags: 0

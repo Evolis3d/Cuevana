@@ -1,7 +1,4 @@
-﻿using System;
-using System.Timers;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class checkpoint : MonoBehaviour
 {

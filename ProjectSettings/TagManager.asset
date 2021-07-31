@@ -12,6 +12,7 @@ TagManager:
   - water
   - base
   - safezone
+  - enemycanon
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - minions
   - naves
   - rescued
-  - 
+  - enemies
   - 
   - 
   - 

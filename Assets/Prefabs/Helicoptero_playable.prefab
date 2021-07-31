@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef79ed0392d129469b7169afc9ea61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vel: 0
   thrust: 2
   maxsteer: 20
 --- !u!114 &6508603043224110941
@@ -258,4 +259,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabPlayable: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
     type: 3}
-  prefabDummy: {fileID: 0}
+  prefabDummy: {fileID: 6508603043224110943, guid: f15d505e3d9450a49be23899e92bb7d7,
+    type: 3}

@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233b5c3ac0e4e3b4b95470c579d69112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 7000071197221083260, guid: 336eecab4862b7246bf935316c1f8f3f, type: 3}
+  Player: {fileID: 6508603043224110943, guid: b62d67b144305da448dd4bc7c5e6f475, type: 3}
 --- !u!4 &418038360
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,6 +1272,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &939801789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110931, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508603043224110943, guid: b62d67b144305da448dd4bc7c5e6f475,
+        type: 3}
+      propertyPath: m_Name
+      value: Helicoptero_playable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b62d67b144305da448dd4bc7c5e6f475, type: 3}
 --- !u!1 &1127062225
 GameObject:
   m_ObjectHideFlags: 0

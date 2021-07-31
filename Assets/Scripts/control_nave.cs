@@ -10,19 +10,19 @@ public class control_nave : Interactivo
 
     public bool landed; 
     
-    private Rigidbody2D rb;
-    private PolygonCollider2D col;
+    private Rigidbody2D _rb;
+    private PolygonCollider2D _col;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<PolygonCollider2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        vel = rb.velocity.magnitude;
+        vel = _rb.velocity.magnitude;
         
         //aterrizar 
         if (vel > 0.1f)
@@ -45,37 +45,37 @@ public class control_nave : Interactivo
 
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
         {
-            rb.velocity += dir * (thrust * Time.deltaTime);
+            _rb.velocity += dir * (thrust * Time.deltaTime);
             
             //ñapa
-            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
+            if (_rb.angularVelocity!=0) _rb.angularVelocity = 0f;
         }
 
         if ((Input.GetKey(KeyCode.Q)) || Input.GetAxisRaw("RCS") <= -1)
         {
             var corregido = Vector2.Perpendicular(dir) * -1f;
-            rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
+            _rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
             
             //ñapa
-            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
+            if (_rb.angularVelocity!=0) _rb.angularVelocity = 0f;
         }
         
         if ((Input.GetKey(KeyCode.E)) || Input.GetAxisRaw("RCS") >= 1)
         {
             var corregido = Vector2.Perpendicular(dir);
-            rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
+            _rb.velocity += corregido * (thrust * 0.5f * Time.deltaTime);
             
             //ñapa
-            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
+            if (_rb.angularVelocity!=0) _rb.angularVelocity = 0f;
         }
 
 
         if (Input.GetAxis("Horizontal") != 0)
         {
-            rb.rotation -= Input.GetAxis("Horizontal");
+            _rb.rotation -= Input.GetAxis("Horizontal");
             
             //ñapa
-            if (rb.angularVelocity!=0) rb.angularVelocity = 0f;
+            if (_rb.angularVelocity!=0) _rb.angularVelocity = 0f;
         }
         
         //pausa,break
@@ -103,8 +103,8 @@ public class control_nave : Interactivo
                 } else if (vel > 0.5f)
                 {
                     var choque = other.GetContact(0).normal; 
-                    var rebote = Vector2.Reflect(rb.velocity,choque);
-                    rb.velocity = rebote;
+                    var rebote = Vector2.Reflect(_rb.velocity,choque);
+                    _rb.velocity = rebote;
 
                     StartCoroutine(nameof(resetRebote));
                 }
@@ -116,31 +116,31 @@ public class control_nave : Interactivo
     IEnumerator resetRebote()
     {
         yield return new WaitForSeconds(0.5f);
-        rb.angularVelocity = 0f;
+        _rb.angularVelocity = 0f;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("0gravzone"))
         {
-            foreach (var point in col.points)
+            foreach (var point in _col.points)
             {
                 var po = transform.TransformPoint(point);
                 if (!other.OverlapPoint(po)) return;
             }
             
-            if (rb.gravityScale !=0f) rb.gravityScale = 0f; //por defecto la nave tiene 0.1
+            if (_rb.gravityScale !=0f) _rb.gravityScale = 0f; //por defecto la nave tiene 0.1
         }
 
         if (other.CompareTag("invertgravzone"))
         {
-            foreach (var point in col.points)
+            foreach (var point in _col.points)
             {
                 var po = transform.TransformPoint(point);
                 if (!other.OverlapPoint(po)) return;
             }
             
-            if (rb.gravityScale != -0.1f) rb.gravityScale = -0.1f; //por defecto la nave tiene 0.1
+            if (_rb.gravityScale != -0.1f) _rb.gravityScale = -0.1f; //por defecto la nave tiene 0.1
         }
     }
 
@@ -148,12 +148,12 @@ public class control_nave : Interactivo
     {
         if (other.CompareTag("0gravzone"))
         {
-            rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1
+            _rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1
         }
 
         if (other.CompareTag("invertgravzone"))
         {
-            rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1 y hacia abajo..
+            _rb.gravityScale = 0.1f; //por defecto la nave tiene 0.1 y hacia abajo..
         }
     }
 }

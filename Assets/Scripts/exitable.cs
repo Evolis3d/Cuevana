@@ -5,20 +5,18 @@ public class exitable : MonoBehaviour
     public GameObject prefabPlayable;
     public GameObject prefabDummy;
     
-    private control_nave _control;
     private bool _canLeave;
 
     private Game _gameComp;
 
     private void Awake()
     {
-        _control = GetComponent<control_nave>();
         _gameComp = FindObjectOfType<Game>();
     }
 
     void Update()
     {
-        _canLeave = _control.landed;
+        _canLeave = GameMode.PlayerLanded;
 
         if (_canLeave)
         {

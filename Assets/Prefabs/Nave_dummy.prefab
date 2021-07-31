@@ -91,14 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4782099092784398546}
   - component: {fileID: 4782099092784398547}
-  - component: {fileID: 4782099092784398548}
   - component: {fileID: 4782099092784398549}
-  - component: {fileID: 4782099092784398550}
-  - component: {fileID: 5417398116765316267}
-  - component: {fileID: -7998766160999217151}
-  - component: {fileID: 8381685204192067093}
+  - component: {fileID: -1114706992508317189}
   m_Layer: 11
-  m_Name: Protonave_playable
+  m_Name: Nave_dummy
   m_TagString: nave
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -161,7 +157,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8bf9fc4d346756e4199e88e9ab63789c, type: 3}
-  m_Color: {r: 0.18783373, g: 0.3637229, b: 0.5943396, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -171,27 +167,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4782099092784398548
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4782099092784398551}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &4782099092784398549
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +177,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -220,7 +195,7 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5}
       - {x: -0.4330127, y: -0.25000003}
       - {x: 0.43301272, y: -0.24999996}
---- !u!114 &4782099092784398550
+--- !u!114 &-1114706992508317189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,57 +204,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4782099092784398551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf14c8f941684f74fbea431b23d3268a, type: 3}
+  m_Script: {fileID: 11500000, guid: a3eadc4ab787c0d4d84dfd7799523e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
-  vel: 0
-  landed: 0
---- !u!114 &5417398116765316267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4782099092784398551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5670fc9fea1ec50459d3dc3c195c5ddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPod: {fileID: 4879633890386064607, guid: e2095389a45894a48b6307ab94a10208,
-    type: 3}
-  cComp: {fileID: 4782099092784398550}
---- !u!114 &-7998766160999217151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4782099092784398551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6506397c27133bf42a5f7bb31cd2deb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 4782099093255776064}
-  leftRCS: {fileID: 4782099093186527475}
-  rightRCS: {fileID: 4782099092315356908}
---- !u!114 &8381685204192067093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4782099092784398551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211bbfffda175948988ec0689dd4d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPlayable: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
-    type: 3}
-  prefabDummy: {fileID: 4782099092784398551, guid: 7c6dc6fa40240cc468d41b3656b1b871,
+  prefabPlayable: {fileID: 4782099092784398551, guid: 13811b1275c257640846e27b2a4fddb7,
     type: 3}
 --- !u!1 &4782099093186527476
 GameObject:

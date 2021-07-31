@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7681235282692862250}
   - component: {fileID: 7681235282692862251}
-  - component: {fileID: 7681235282692862248}
   - component: {fileID: 7681235282692862249}
-  - component: {fileID: 7681235282692862262}
-  - component: {fileID: -4872669748592760277}
+  - component: {fileID: 7778516507770612200}
   m_Layer: 11
-  m_Name: Motocicleta_playable
+  m_Name: Motocicleta_dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cdd825a4aba84564683cf772902f6fce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38fc856e16e36754e92eb3cced26d0a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,27 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7681235282692862248
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681235282692862263}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.5
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &7681235282692862249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +93,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.21875}
@@ -132,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5625, y: 0.4375}
   m_EdgeRadius: 0
---- !u!114 &7681235282692862262
+--- !u!114 &7778516507770612200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,26 +118,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7681235282692862263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6bfa2005bef5cb438cee9fd34b7f577, type: 3}
+  m_Script: {fileID: 11500000, guid: a3eadc4ab787c0d4d84dfd7799523e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
-  vel: 0
-  prefabMinion: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
-    type: 3}
---- !u!114 &-4872669748592760277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681235282692862263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211bbfffda175948988ec0689dd4d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPlayable: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
-    type: 3}
-  prefabDummy: {fileID: 7681235282692862263, guid: 1e28b09a14105cb46897f12989d8a602,
+  prefabPlayable: {fileID: 7681235282692862263, guid: 9c52a7e4f99c9a247aca0caf7046cfa1,
     type: 3}

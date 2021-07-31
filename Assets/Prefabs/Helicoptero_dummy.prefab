@@ -91,13 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6508603043224110931}
   - component: {fileID: 6508603043224110930}
-  - component: {fileID: 6508603043224110929}
-  - component: {fileID: 6508603043224110928}
-  - component: {fileID: 6508603043224110940}
-  - component: {fileID: 6508603043224110941}
-  - component: {fileID: -514429814820906389}
+  - component: {fileID: 7275501784750380467}
+  - component: {fileID: -6971559240094434752}
   m_Layer: 11
-  m_Name: Helicoptero_playable
+  m_Name: Helicoptero_dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,28 +165,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6508603043224110929
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508603043224110943}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &6508603043224110928
+--- !u!61 &7275501784750380467
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +175,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -215,7 +191,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6508603043224110940
+--- !u!114 &-6971559240094434752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,38 +200,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6508603043224110943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ef79ed0392d129469b7169afc9ea61e, type: 3}
+  m_Script: {fileID: 11500000, guid: a3eadc4ab787c0d4d84dfd7799523e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 2
-  maxsteer: 20
---- !u!114 &6508603043224110941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508603043224110943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6506397c27133bf42a5f7bb31cd2deb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 6508603042106436381}
-  leftRCS: {fileID: 0}
-  rightRCS: {fileID: 0}
---- !u!114 &-514429814820906389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508603043224110943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211bbfffda175948988ec0689dd4d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPlayable: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
+  prefabPlayable: {fileID: 6508603043224110943, guid: b62d67b144305da448dd4bc7c5e6f475,
     type: 3}
-  prefabDummy: {fileID: 0}

@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3979216170747836866}
   - component: {fileID: 1007265602374279873}
-  - component: {fileID: 8690574046312205812}
   - component: {fileID: 3860712453918024791}
-  - component: {fileID: 6276915301704579254}
-  - component: {fileID: -4991103714924872021}
+  - component: {fileID: 8476894643598470270}
   m_Layer: 11
-  m_Name: Lancha_playable
+  m_Name: Lancha_dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,39 +72,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7860522057712424682, guid: 9296ca899c5489f4b8a137a9e3791c68,
+  m_Sprite: {fileID: -1395428486403065011, guid: 9296ca899c5489f4b8a137a9e3791c68,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.84375, y: 0.34375}
+  m_Size: {x: 0.84375, y: 0.28125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8690574046312205812
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7000071197221083260}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0.2
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!60 &3860712453918024791
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -124,8 +101,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.84375, y: 0.34375}
-    newSize: {x: 0.84375, y: 0.34375}
+    oldSize: {x: 0.84375, y: 0.28125}
+    newSize: {x: 0.84375, y: 0.28125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -136,7 +113,7 @@ PolygonCollider2D:
       - {x: -0.296875, y: 0.15625}
       - {x: 0.421875, y: 0.15625}
       - {x: 0.421875, y: 0}
---- !u!114 &6276915301704579254
+--- !u!114 &8476894643598470270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,26 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7000071197221083260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915f750516d30df4391594ec351c0591, type: 3}
+  m_Script: {fileID: 11500000, guid: a3eadc4ab787c0d4d84dfd7799523e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 4
-  vel: 0
-  prefabMinion: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
-    type: 3}
---- !u!114 &-4991103714924872021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7000071197221083260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211bbfffda175948988ec0689dd4d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPlayable: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
-    type: 3}
-  prefabDummy: {fileID: 7000071197221083260, guid: 53875ba83d00d3f49a2a055580d1fbb3,
+  prefabPlayable: {fileID: 7000071197221083260, guid: 336eecab4862b7246bf935316c1f8f3f,
     type: 3}

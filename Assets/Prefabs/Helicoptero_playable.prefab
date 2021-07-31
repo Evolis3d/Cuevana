@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: -514429814820906389}
   m_Layer: 11
   m_Name: Helicoptero_playable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: helicoptero
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -230,6 +230,7 @@ MonoBehaviour:
   vel: 0
   thrust: 2
   maxsteer: 20
+  landed: 0
 --- !u!114 &6508603043224110941
 MonoBehaviour:
   m_ObjectHideFlags: 0

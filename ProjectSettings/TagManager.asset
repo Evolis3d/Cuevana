@@ -13,6 +13,9 @@ TagManager:
   - base
   - safezone
   - enemycanon
+  - helicoptero
+  - moto
+  - lancha
   layers:
   - Default
   - TransparentFX
@@ -28,8 +31,8 @@ TagManager:
   - naves
   - rescued
   - enemies
-  - 
-  - 
+  - coches
+  - barcos
   - 
   - 
   - 

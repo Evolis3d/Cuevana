@@ -6,12 +6,12 @@ public class control_moto : Interactivo
     [Header("Motocicleta")] 
     private Vector2 dir;
     private float lado,lastlado;
+    private bool stopped;
+    
     public float thrust = 3f;
     public float vel;
     
     private Rigidbody2D _rb;
-    private BoxCollider2D _col;
-    private SpriteRenderer _spr;
     
     [Header("Minion Playable")]
     public GameObject prefabMinion;
@@ -21,8 +21,6 @@ public class control_moto : Interactivo
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<BoxCollider2D>();
-        _spr = GetComponent<SpriteRenderer>();
         _follow = Camera.main.GetComponent<cameraFollow>();
     }
     
@@ -37,30 +35,45 @@ public class control_moto : Interactivo
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
-        {
-            _rb.velocity += dir * (thrust * Time.deltaTime);
-        }
-        vel = _rb.velocity.magnitude;
+        GameMode.PlayerLanded = stopped;
+        
+        Mechanics_ACCEL();
 
-        dir = _spr.flipX ? Vector2.left : Vector2.right;
+        Mechanics_MOVE();
+    }
 
-        if (Input.GetAxisRaw("Horizontal") != 0)
+    private void Mechanics_MOVE()
+    {
+        dir = (transform.localScale == Vector3.one) ? Vector2.right : Vector2.left;
+        var isMoving = Input.GetAxisRaw("Horizontal") != 0f;
+        if (isMoving)
         {
             lado = Input.GetAxisRaw("Horizontal");
 
             if (lado != lastlado)
             {
-                if (lado >= 1) _spr.flipX = false;
-                if (lado <= -1)_spr.flipX = true;
+                if (lado >= 1f) transform.localScale = Vector3.one;
+                if (lado <= -1f) transform.localScale = Vector3.left + Vector3.up + Vector3.forward;
                 lastlado = lado;
             }
         }
     }
 
+    private void Mechanics_ACCEL()
+    {
+        if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
+        {
+            _rb.velocity += dir * (thrust * Time.deltaTime);
+        }
+
+        vel = _rb.velocity.magnitude;
+
+        stopped = (Mathf.Approximately(vel,0f));
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.CompareTag("base"))
+        if (other.transform.CompareTag("base")) // o choca contra otro tipo de edificios y cosas duras...
         {
             if (vel > 1f)
             {

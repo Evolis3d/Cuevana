@@ -36,7 +36,7 @@ public class control_minion : Interactivo
     // Start is called before the first frame update
     void Start()
     {
-        _on = onSurface.onAir;
+        _on = onSurface.onGround;
     }
 
     // Update is called once per frame

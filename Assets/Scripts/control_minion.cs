@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class control_minion : Interactivo
@@ -24,8 +25,10 @@ public class control_minion : Interactivo
     
     private float _timeFalling;
     private bool _isFalling;
-    private float _timeFell;
-    private float _deathFall = 3f;
+    
+    private Vector2 _distFell;
+    
+    private float _deathFall = 3.5f;
 
     private void Awake()
     {
@@ -37,6 +40,10 @@ public class control_minion : Interactivo
     void Start()
     {
         _on = onSurface.onGround;
+
+        //reseteo distancia de caída
+        _distFell.x = transform.position.y;
+        _distFell.y = transform.position.y;
     }
 
     // Update is called once per frame
@@ -159,8 +166,10 @@ public class control_minion : Interactivo
                     
                     if (_timeFalling > 0.75f) 
                     {
-                        _timeFell = 0f;
                         _canMove = false;
+                        
+                        //marco la istancia inicial de caída
+                        if (_distFell == Vector2.zero) _distFell.x = transform.position.y;
                     }
                     _timeFalling += 1f * Time.deltaTime;
                     //Anims de Caer
@@ -178,7 +187,10 @@ public class control_minion : Interactivo
                     {
                         _isFalling = false;
                         _anim.SetBool("isFalling", false);
-                        _timeFell = _timeFalling;
+                        
+                        //actualizo la distancia final de la caida
+                        _distFell.y = transform.position.y;
+                        
                         _timeFalling = 0f;
                         
                         //prueba, cambio a onGround
@@ -279,12 +291,20 @@ public class control_minion : Interactivo
         //Esta línea asegura que sólo aplicamos delay si chocamos contra el Suelo,etc...
         if (_on == onSurface.onWater)
         {
+            //reseteo la distancia de caída
+            _distFell.x = transform.position.y;
+            _distFell.y = _distFell.x;
+            
             _canMove = true;
             return;
         }
+
+        var hostiazo = Vector2.Distance(new Vector2(0f, _distFell.x), new Vector2(0f, _distFell.y));
+        //Debug.Log(hostiazo);
+        //Debug.DrawLine(new Vector2(0f,_distFell.x),new Vector2(0f,_distFell.y),Color.yellow);
         
-            //si cae desde más de 3 secs, lo mato.
-        if (_timeFell > _deathFall)
+        //si cae desde más alto de lo permitido, lo mato.
+        if (hostiazo >= _deathFall)
         {
             KillMinion();
         }
@@ -297,6 +317,10 @@ public class control_minion : Interactivo
     IEnumerator MakeDelay(float secs)
     {
         yield return new WaitForSeconds(secs);
+        
+        //reseteo la distancia de caída
+        _distFell.x = transform.position.y;
+        _distFell.y = _distFell.x;
         
         _canMove = true;
         //cambio a modo Ground
@@ -319,6 +343,11 @@ public class control_minion : Interactivo
             _anim.SetBool("isFalling",false);
             _timeFalling = 0f;
             _anim.SetFloat("timeFalling",0f);
+            
+            //reseteo la distancia de caída
+            _distFell.x = transform.position.y;
+            _distFell.y = _distFell.x;
+            
             _canMove = true;
             //cambio a onWater
             _on = onSurface.onWater;

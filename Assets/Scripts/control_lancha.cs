@@ -9,10 +9,11 @@ public class control_lancha : Interactivo
     public float thrust = 4f;
     public float vel;
     private bool canMove = false;
+
+    private bool _idling;
+
     
     private Rigidbody2D _rb;
-    private BoxCollider2D _col;
-    private SpriteRenderer _spr;
     
     [Header("Minion Playable")]
     public GameObject prefabMinion;
@@ -22,8 +23,6 @@ public class control_lancha : Interactivo
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<BoxCollider2D>();
-        _spr = GetComponent<SpriteRenderer>();
         _follow = Camera.main.GetComponent<cameraFollow>();
     }
     
@@ -38,28 +37,42 @@ public class control_lancha : Interactivo
     // Update is called once per frame
     void Update()
     {
+        GameMode.PlayerLanded = (_idling || !canMove);
+        
         if (!canMove) return;
         
+        Mechanics_ACCEL();
+
+        Mechanics_MOVE();
+    }
+
+    private void Mechanics_MOVE()
+    {
+        dir = (transform.localScale == Vector3.one) ? Vector2.right : Vector2.left;
+        var isMoving = Input.GetAxisRaw("Horizontal") != 0f;
+        if (isMoving)
+        {
+            lado = Input.GetAxisRaw("Horizontal");
+
+            if (lado != lastlado)
+            {
+                if (lado >= 1f) transform.localScale = Vector3.one;
+                if (lado <= -1f) transform.localScale = Vector3.left + Vector3.up + Vector3.forward;
+                lastlado = lado;
+            }
+        }
+    }
+
+    private void Mechanics_ACCEL()
+    {
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
         {
             _rb.velocity += dir * (thrust * Time.deltaTime);
         }
 
         vel = _rb.velocity.magnitude;
-
-        dir = _spr.flipX ? Vector2.left : Vector2.right;
-
-        if (Input.GetAxisRaw("Horizontal") != 0)
-        {
-            lado = Input.GetAxisRaw("Horizontal");
-
-            if (lado != lastlado)
-            {
-                if (lado >= 1) _spr.flipX = false;
-                if (lado <= -1) _spr.flipX = true;
-                lastlado = lado;
-            }
-        }
+        
+        _idling = (vel < 0.2f);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

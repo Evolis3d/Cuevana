@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ed0135e0921149988999130e08637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabMinion: {fileID: 6472670011471511180, guid: 993169dc2d88cb041b3ef150bc527e2f,
+  prefabMinion: {fileID: 3203982550309605561, guid: 993169dc2d88cb041b3ef150bc527e2f,
     type: 3}
   speed: 10
 --- !u!1 &6312232243776732727

@@ -18,8 +18,11 @@ public class entrable : MonoBehaviour
     {
         if (_control.CanEnterVehicles())
         {
-            var layerNaves = LayerMask.GetMask("naves");
-            var hit = Physics2D.CircleCast(transform.position, 1f, Vector2.up, 1f, layerNaves);
+            var layerEntrables = LayerMask.GetMask("naves") |
+                                 LayerMask.GetMask("coches") |
+                                 LayerMask.GetMask("barcos");
+            
+            var hit = Physics2D.CircleCast(transform.position, 1f, Vector2.up, 1f, layerEntrables);
             _canEnter = (hit.collider != null);
 
             if (!_canEnter) return;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class control_minion : MonoBehaviour
+public class control_minion : Interactivo
 {
     enum onSurface
     {

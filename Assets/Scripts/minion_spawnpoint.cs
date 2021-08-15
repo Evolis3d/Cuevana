@@ -11,7 +11,7 @@ public class minion_spawnpoint : MonoBehaviour
     {
         if (crashSprite)
         {
-            var crash = new GameObject();
+            var crash = new GameObject("House_destroyed");
             var spr = crash.AddComponent<SpriteRenderer>();
             spr.sprite = crashSprite;
             spr.sortingOrder = -1;

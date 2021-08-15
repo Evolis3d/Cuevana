@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2486075953678901370}
   - component: {fileID: 4717220082722248195}
   - component: {fileID: 4420426265347493285}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: prison0
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}

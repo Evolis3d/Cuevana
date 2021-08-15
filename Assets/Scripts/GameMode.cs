@@ -6,8 +6,8 @@ public class GameMode : MonoBehaviour
     [Header("Game")]
     public static bool AllRescued;
     public static DateTime TimePlayed;
-    private DateTime _startTime;
-    private DateTime _endTime;
+    protected DateTime _startTime;
+    protected DateTime _endTime;
 
     [Header("Nave")]
     public static bool PlayerLanded;
@@ -23,43 +23,32 @@ public class GameMode : MonoBehaviour
     public static int PrisonersKilled;
 
     [Header("Info")] 
-    [SerializeField] private bool _AllRescued;
-    [SerializeField] private bool _PlayerLanded;
-    [SerializeField] private int _Lives;
-    [SerializeField] private int _TotalPrisoners;
-    [SerializeField] private int _PrisonersNeeded;
-    [SerializeField] private int _PrisonersRescued;
-    [SerializeField] private int _PrisonersAboard;
-    [SerializeField] private int _PrisonersLeft;
-    [SerializeField] private int _PrisonersKilled;
+    [SerializeField] protected bool _AllRescued;
+    [SerializeField] protected bool _PlayerLanded;
+    [SerializeField] protected int _Lives;
+    [SerializeField] protected int _TotalPrisoners;
+    [SerializeField] protected int _PrisonersNeeded;
+    [SerializeField] protected int _PrisonersRescued;
+    [SerializeField] protected int _PrisonersAboard;
+    [SerializeField] protected int _PrisonersLeft;
+    [SerializeField] protected int _PrisonersKilled;
 
-    private void Start()
+    protected void Start()
     {
         _startTime = new DateTime();
         _endTime = new DateTime();
         TimePlayed = new DateTime();
+        
+        //ESPACIO PARA PERSONALIZAR EL GAMEMODE
         //
-        TotalPrisoners = GetLevelPrisoners();
-        if (TotalPrisoners < 1)
-        {
-            Debug.LogError("NO HAY PRISIONEROS EN ESTE NIVEL!!!");
-            Debug.DebugBreak();
-        }
-        else
-        {
-            //por defecto aplico porcentaje de la mayoría, para completar el nivel
-            // (WIP, derivar en modo de juego propio...)
-            PrisonersNeeded = Mathf.CeilToInt((float)TotalPrisoners * 0.8f);
-        }
-
-        //
+        
         _startTime = DateTime.Now;
         Lives = 3;
         //
         CurrentCheckPoint = Vector2.zero;
     }
 
-    private void Update()
+    protected void Update()
     {
         AllRescued = PrisonersRescued >= PrisonersNeeded;
         PrisonersLeft = TotalPrisoners - (PrisonersRescued + PrisonersKilled);
@@ -89,7 +78,7 @@ public class GameMode : MonoBehaviour
         _PrisonersKilled = PrisonersKilled;
     }
 
-    private void GameOver(int result)
+    protected void GameOver(int result)
     {
         _endTime = DateTime.Now;
         
@@ -112,17 +101,5 @@ public class GameMode : MonoBehaviour
                 Debug.Break();
                 break;
         }
-    }
-
-
-    private int GetLevelPrisoners()
-    {
-        var tempPrisoners = 0;
-        var tempo = FindObjectsOfType<minion_spawnpoint>();
-        foreach (var comp in tempo)
-        {
-            tempPrisoners += comp.amount;
-        }
-        return tempPrisoners;
     }
 }

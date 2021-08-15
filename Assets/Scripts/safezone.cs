@@ -21,9 +21,12 @@ public class safezone : MonoBehaviour
         
         if (_timer > _freqspawn)
         {
-            if (prefabRescued) { 
-                Instantiate(prefabRescued, _posnave, Quaternion.identity);
-                GameMode.PrisonersAboard--;
+            if (prefabRescued) {
+                if (GameMode.PrisonersAboard > 0)
+                {
+                    Instantiate(prefabRescued, _posnave, Quaternion.identity);
+                    GameMode.PrisonersAboard--;
+                }
             }
             _timer = 0f;
         }

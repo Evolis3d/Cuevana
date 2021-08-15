@@ -39,6 +39,20 @@ public class GameMode : MonoBehaviour
         _endTime = new DateTime();
         TimePlayed = new DateTime();
         //
+        TotalPrisoners = GetLevelPrisoners();
+        if (TotalPrisoners < 1)
+        {
+            Debug.LogError("NO HAY PRISIONEROS EN ESTE NIVEL!!!");
+            Debug.DebugBreak();
+        }
+        else
+        {
+            //por defecto aplico porcentaje de la mayoría, para completar el nivel
+            // (WIP, derivar en modo de juego propio...)
+            PrisonersNeeded = Mathf.CeilToInt((float)TotalPrisoners * 0.8f);
+        }
+
+        //
         _startTime = DateTime.Now;
         Lives = 3;
         //
@@ -47,9 +61,21 @@ public class GameMode : MonoBehaviour
 
     private void Update()
     {
-        AllRescued = PrisonersRescued > PrisonersNeeded;
-        
-        if (Lives<1) GameOver(0);
+        AllRescued = PrisonersRescued >= PrisonersNeeded;
+        PrisonersLeft = TotalPrisoners - (PrisonersRescued + PrisonersKilled);
+
+        if (Lives < 1)
+        {
+            GameOver(0);
+        }
+        else if (AllRescued)
+        {
+            GameOver(1);
+        }
+        else if (PrisonersNeeded - PrisonersRescued > PrisonersLeft)
+        {
+            GameOver(2);
+        }
         
         //relleno info privada
         _AllRescued = AllRescued;
@@ -86,5 +112,17 @@ public class GameMode : MonoBehaviour
                 Debug.Break();
                 break;
         }
+    }
+
+
+    private int GetLevelPrisoners()
+    {
+        var tempPrisoners = 0;
+        var tempo = FindObjectsOfType<minion_spawnpoint>();
+        foreach (var comp in tempo)
+        {
+            tempPrisoners += comp.amount;
+        }
+        return tempPrisoners;
     }
 }

@@ -2,7 +2,7 @@
 
 public class GameMode_SaveAll : GameMode
 {
-    private void Start()
+    private new void Start()
     {
         base.Start();
         

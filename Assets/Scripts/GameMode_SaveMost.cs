@@ -2,7 +2,7 @@
 
 public class GameMode_SaveMost : GameMode
 {
-    void Start()
+    private new void Start()
     {
         base.Start();
         

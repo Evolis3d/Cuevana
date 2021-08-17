@@ -11,7 +11,7 @@ public class bullet : MonoBehaviour
     private SpriteRenderer rend;
     private bool isMoving = true;
     private Vector2 dir;
-    private disparable_pool sender;
+    private Bullet_Pool sender;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class bullet : MonoBehaviour
         isMoving = false;
     }
 
-    public void Fire(disparable_pool author, Vector3 pos = new Vector3(), Vector2 direc = new Vector2() )
+    public void Fire(Bullet_Pool author, Vector3 pos = new Vector3(), Vector2 direc = new Vector2() )
     {
         if (author.Equals(null)) return;
 

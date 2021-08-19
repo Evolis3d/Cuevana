@@ -25,6 +25,9 @@ public class Game : MonoBehaviour
 
     void Update()
     {
+        //PAUSA con la tecla P
+        if (Input.GetKeyDown(KeyCode.P)) Debug.Break();
+        
         if (!_player && Input.GetKeyDown(KeyCode.F1))
         {
             _poiComp.RefreshPOI();

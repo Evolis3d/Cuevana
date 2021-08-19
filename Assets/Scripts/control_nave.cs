@@ -78,9 +78,6 @@ public class control_nave : Interactivo
             if (_rb.angularVelocity!=0) _rb.angularVelocity = 0f;
         }
         
-        //pausa,break
-        if (Input.GetKeyDown(KeyCode.P)) Debug.Break();
-        
         rot = transform.eulerAngles.z;
 
         dir = new Vector2(Mathf.Cos((rot+90f) * Mathf.Deg2Rad), Mathf.Sin((rot+90f) * Mathf.Deg2Rad) );

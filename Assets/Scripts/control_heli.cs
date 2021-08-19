@@ -59,9 +59,6 @@ public class control_heli : Interactivo
         //if (_steer != 0) _rb.gravityScale = caida;
         
         _rb.velocity = new Vector2(-dir.x * 0.25f, _rb.velocity.y);
-        
-        //pausa,break
-        if (Input.GetKeyDown(KeyCode.P)) Debug.Break();
     }
     
     private void OnCollisionEnter2D(Collision2D other)

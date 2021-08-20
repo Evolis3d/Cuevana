@@ -7,6 +7,7 @@ public class control_moto : Interactivo
     private Vector2 dir;
     private float lado,lastlado;
     private bool stopped;
+    private bool canMove = false;
     
     public float thrust = 3f;
     public float vel;
@@ -35,11 +36,25 @@ public class control_moto : Interactivo
     // Update is called once per frame
     void Update()
     {
-        GameMode.PlayerLanded = stopped;
+        GameMode.PlayerLanded = (stopped && canMove);
+        
+        Raycast_Ground();
         
         Mechanics_ACCEL();
+        
+        Mechanics_FLIP();
 
         Mechanics_MOVE();
+    }
+    
+    private void Raycast_Ground()
+    {
+        var layerSuelo = LayerMask.GetMask("suelos");
+        var hit = -1f * transform.up;
+        var ray = Physics2D.Raycast(transform.position, hit, 0.1f, layerSuelo);
+        
+        Debug.DrawRay(transform.position,hit * 0.1f,Color.red);
+        canMove = (ray.collider != null);
     }
 
     private void Mechanics_MOVE()
@@ -61,6 +76,8 @@ public class control_moto : Interactivo
 
     private void Mechanics_ACCEL()
     {
+        if (!canMove) return;
+        
         if ((Input.GetKey(KeyCode.UpArrow)) || Input.GetButton("Thrust"))
         {
             _rb.velocity += dir * (thrust * Time.deltaTime);
@@ -70,6 +87,24 @@ public class control_moto : Interactivo
 
         stopped = (Mathf.Approximately(vel,0f));
     }
+
+    private void Mechanics_FLIP()
+    {
+        if (canMove) return;
+        
+        if ((Input.GetKey(KeyCode.Q)) || Input.GetAxisRaw("RCS") <= -1)
+        {
+            _rb.angularVelocity = 0f;
+            _rb.rotation += 20f * (thrust * Time.deltaTime);
+        }
+        
+        if ((Input.GetKey(KeyCode.E)) || Input.GetAxisRaw("RCS") >= 1)
+        {
+            _rb.angularVelocity = 0f;
+            _rb.rotation -= 20f * (thrust * Time.deltaTime);
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class control_moto : Interactivo
@@ -95,13 +96,21 @@ public class control_moto : Interactivo
         if ((Input.GetKey(KeyCode.Q)) || Input.GetAxisRaw("RCS") <= -1)
         {
             _rb.angularVelocity = 0f;
-            _rb.rotation += 20f * (thrust * Time.deltaTime);
+            _rb.rotation += 30f * (thrust * Time.deltaTime);
         }
         
         if ((Input.GetKey(KeyCode.E)) || Input.GetAxisRaw("RCS") >= 1)
         {
             _rb.angularVelocity = 0f;
-            _rb.rotation -= 20f * (thrust * Time.deltaTime);
+            _rb.rotation -= 30f * (thrust * Time.deltaTime);
+        }
+        
+        //si la moto da casi la vuelta , me caigo de ella
+        var maxrot = math.abs(_rb.rotation);
+        if (maxrot > 160f)
+        {
+            var exitComp = GetComponent<exitable>();
+            if (exitComp) exitComp.Mechanic_EXITVEHICLE(false);
         }
     }
 

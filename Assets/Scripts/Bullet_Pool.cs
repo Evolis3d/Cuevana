@@ -46,6 +46,23 @@ public class Bullet_Pool : MonoBehaviour
         //
     }
     
+    //variedad que dispara pasando un Vector3 Direction
+    public void Shoot(Transform origin, Vector3 direction)
+    {
+        pool[_bulletsLeft-1].transform.SetParent(origin);
+        pool[_bulletsLeft-1].transform.position = origin.position;
+        pool[_bulletsLeft - 1].transform.rotation = Quaternion.LookRotation(direction);
+        pool[_bulletsLeft-1].transform.Translate(0f,0.6f,0f);
+        
+        var pos = pool[_bulletsLeft - 1].transform.position;
+        var rot = pool[_bulletsLeft - 1].transform.rotation.z;
+        var dir = new Vector2(Mathf.Cos((rot+90f) * Mathf.Deg2Rad), Mathf.Sin((rot+90f) * Mathf.Deg2Rad) );
+        
+        pool[_bulletsLeft-1].GetComponent<bullet>().Fire(this, pos,dir);
+        pool[_bulletsLeft-1].transform.SetParent(_poolFolder.transform);
+        _bulletsLeft--;
+    }
+
     public void Recycle(GameObject bala)
     {
         pool[pool.IndexOf(bala)].transform.SetParent(_poolFolder.transform);

@@ -51,7 +51,7 @@ public class enemy_tank : MonoBehaviour
                     if (_timerShoot > _freqShoot)
                     {
                         _timerShoot = 0f;
-                        shotComp.Shoot(cannon.transform);
+                        shotComp.Shoot(cannon.transform,cannon.transform.up);
                     }
                     else
                     {

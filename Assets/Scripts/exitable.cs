@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class exitable : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class exitable : MonoBehaviour
 
     private void Awake()
     {
+        if (!prefabDummy || !prefabPlayable) throw new Exception("Error! Falta asignar los prefabs de Dummy!!");
+        
         _gameComp = FindObjectOfType<Game>();
     }
 
@@ -24,16 +27,22 @@ public class exitable : MonoBehaviour
             {
                 if (!prefabPlayable || !prefabDummy) return;
 
-                var navePos = transform.position;
-                var dummy = Instantiate(prefabDummy, navePos, Quaternion.identity);
-                Destroy(gameObject);
-                
-                var miniYo = Instantiate(prefabPlayable, navePos, Quaternion.identity);
-                _gameComp.FocusOn(miniYo.transform);
-                
-                //Debug.Log("Sale del vehiculo!");
-                //Debug.Break();
+                Mechanic_EXITVEHICLE();
             }
         }
+    }
+
+    //Ahora incluyo un flag opcional de dejar o no el dummy en su sitio...
+    public void Mechanic_EXITVEHICLE(bool ponDummy = true)
+    {
+        var navePos = transform.position;
+        if (ponDummy) Instantiate(prefabDummy, navePos, Quaternion.identity);
+        Destroy(gameObject);
+                
+        var miniYo = Instantiate(prefabPlayable, navePos, Quaternion.identity);
+        _gameComp.FocusOn(miniYo.transform);
+                
+        //Debug.Log("Sale del vehiculo!");
+        //Debug.Break(); 
     }
 }

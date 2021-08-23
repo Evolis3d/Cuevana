@@ -27,9 +27,15 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
         if (isMoving)
         {
-            transform.Translate(dir * (speed * Time.deltaTime));
+            //transform.Translate(dir * (speed * Time.deltaTime));
+            transform.localPosition += (Vector3)dir * (speed * Time.deltaTime);
         }
     }
 

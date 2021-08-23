@@ -15,4 +15,10 @@ public class IA_disparable : MonoBehaviour
     {
         GameSystems.bulletPool.Shoot(from, direction);
     }
+    
+    //variedad 2
+    public void Shoot2(Transform from, Vector3 direction)
+    {
+        GameSystems.bulletPool.Shoot2(from, direction);
+    }
 }

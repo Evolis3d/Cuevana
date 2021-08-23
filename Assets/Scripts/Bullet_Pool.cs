@@ -62,7 +62,24 @@ public class Bullet_Pool : MonoBehaviour
         pool[_bulletsLeft-1].transform.SetParent(_poolFolder.transform);
         _bulletsLeft--;
     }
+    
+    //otra variante...
+    public void Shoot2(Transform origin, Vector3 dir)
+    {
+        pool[_bulletsLeft-1].transform.SetParent(origin);
+        pool[_bulletsLeft-1].transform.position = origin.position;
+        pool[_bulletsLeft - 1].transform.right = dir;
+        
+        var pos = pool[_bulletsLeft - 1].transform.position;
+        
+        Debug.DrawRay(pos,dir,Color.red, 3f);
+        
+        pool[_bulletsLeft-1].GetComponent<bullet>().Fire(this, pos,dir);
+        pool[_bulletsLeft-1].transform.SetParent(_poolFolder.transform);
+        _bulletsLeft--;
+    }
 
+    
     public void Recycle(GameObject bala)
     {
         pool[pool.IndexOf(bala)].transform.SetParent(_poolFolder.transform);

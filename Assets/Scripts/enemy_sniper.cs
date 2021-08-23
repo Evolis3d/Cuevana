@@ -8,13 +8,18 @@ public class enemy_sniper : MonoBehaviour
     private float _freqShoot = 3.5f;
     private float _timerShoot;
     private IA_disparable shotComp;
-
+    
+    [Header("Cannon")]
+    [SerializeField] private Transform cannon;
+    
     private void Awake()
     {
+        if (!cannon) throw new Exception("Error! No se han asignado los internals al Sniper!");
         shotComp = GetComponent<IA_disparable>();
     }
 
-    private void Start() { }
+    private void Start()
+    { }
 
     // Update is called once per frame
     void Update()
@@ -23,15 +28,21 @@ public class enemy_sniper : MonoBehaviour
         {
             var dir = _target.position - transform.position;
             transform.localScale = (dir.x > 0f) ? Vector3.one : Vector3.left + Vector3.up + Vector3.forward;
+            cannon.localScale = (dir.x > 0f) ? Vector3.one : Vector3.left + Vector3.up + Vector3.forward;
             
             var dist = Vector2.Distance(transform.position, _target.position);
             
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            angle = (transform.localScale.x == 1f) ? angle :  180f - angle;
+            
+            //magic number para asegurar que esté siempre en el rango -90,90, da igual donde mire...
+            angle = (transform.localScale.x == 1f) ? angle :  180f * Mathf.Sign(angle) - angle;
+
+            Debug.Log(angle);
             
             //apunto con el canyon
-            if (angle < 85f)
+            if (Mathf.Abs(angle) < 80f)
             {
+                cannon.transform.right = _target.position - cannon.transform.position;
                 //si está más lejos del mínimo, le dispara 
                 if (dist > 1f)
                 {
@@ -41,7 +52,7 @@ public class enemy_sniper : MonoBehaviour
                         if (_timerShoot > _freqShoot)
                         {
                             _timerShoot = 0f;
-                            shotComp.Shoot(transform,transform.right);
+                            shotComp.Shoot2(cannon.transform,cannon.transform.right);
                         }
                         else
                         {
@@ -57,6 +68,7 @@ public class enemy_sniper : MonoBehaviour
     {
         if (other.CompareTag("moto") || other.CompareTag("lancha"))
         {
+            _onSight = true;
             _target = other.transform;
         }
     }
@@ -65,6 +77,7 @@ public class enemy_sniper : MonoBehaviour
     {
         if (other.CompareTag("moto") || other.CompareTag("lancha"))
         {
+            _onSight = false;
             _target = null;
         }
     }

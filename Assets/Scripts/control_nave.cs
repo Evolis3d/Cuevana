@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class control_nave : Interactivo
+public class control_nave : controllable
 {
     private float rot;
     private Vector2 dir;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class control_heli : Interactivo
+public class control_heli : controllable
 {
     private Rigidbody2D _rb;
     private BoxCollider2D _col;

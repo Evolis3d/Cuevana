@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class control_minion : Interactivo
+public class control_minion : controllable
 {
     enum onSurface
     {

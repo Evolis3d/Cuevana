@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class control_lancha : Interactivo
+public class control_lancha : controllable
 {
     [Header("Lancha")] 
     private Vector2 dir;

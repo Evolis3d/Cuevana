@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class control_moto : Interactivo
+public class control_moto : controllable
 {
     [Header("Motocicleta")] 
     private Vector2 dir;
@@ -106,7 +105,7 @@ public class control_moto : Interactivo
         }
         
         //si la moto da casi la vuelta , me caigo de ella
-        var maxrot = math.abs(_rb.rotation);
+        var maxrot = Mathf.Abs(_rb.rotation);
         if (maxrot > 160f)
         {
             var exitComp = GetComponent<exitable>();

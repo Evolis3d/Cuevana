@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class ejectable : MonoBehaviour
 {
-    [Header("escapePod")] 
     public GameObject prefabEjectable;
-
-    [Header("Control Principal")] 
     public float selfDestruction = 3f;
     private controllable cComp;
 
@@ -16,6 +13,8 @@ public class ejectable : MonoBehaviour
         if (!cComp) throw new Exception("Error! Ejectable depende de vehículo controllable!");
         if (!prefabEjectable) throw new Exception("Error! Ejectable requiere de un prefab de escape!");
     }
+
+    private void Start() { }
 
     // Update is called once per frame
     void Update()

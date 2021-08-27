@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ad7669a62a9a24e94eb1b1f3ec5f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabEjectable: {fileID: 4879633890386064607, guid: e2095389a45894a48b6307ab94a10208,
+  prefabEjectable: {fileID: 8003374785285438695, guid: e2095389a45894a48b6307ab94a10208,
     type: 3}
   selfDestruction: 3
 --- !u!114 &-7998766160999217151

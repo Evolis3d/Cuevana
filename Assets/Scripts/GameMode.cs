@@ -5,9 +5,8 @@ public class GameMode : MonoBehaviour
 {
     [Header("Game")]
     public static bool AllRescued;
-    public static DateTime TimePlayed;
+    public static TimeSpan TimePlayed;
     protected DateTime _startTime;
-    protected DateTime _endTime;
 
     [Header("Nave")]
     public static bool PlayerLanded;
@@ -36,8 +35,6 @@ public class GameMode : MonoBehaviour
     protected void Start()
     {
         _startTime = new DateTime();
-        _endTime = new DateTime();
-        TimePlayed = new DateTime();
         
         //ESPACIO PARA PERSONALIZAR EL GAMEMODE
         //
@@ -80,7 +77,8 @@ public class GameMode : MonoBehaviour
 
     protected void GameOver(int result)
     {
-        _endTime = DateTime.Now;
+        TimePlayed = DateTime.Now - _startTime;
+        Debug.Log("playtime: " +TimePlayed.Seconds);
         
         switch (result)
         {

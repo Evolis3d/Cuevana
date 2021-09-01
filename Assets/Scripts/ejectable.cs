@@ -23,8 +23,15 @@ public class ejectable : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameMode.Lives++;
-            
-            if (prefabEjectable) Instantiate(prefabEjectable, transform.position, Quaternion.identity);
+
+            if (prefabEjectable)
+            {
+                var clon = Instantiate(prefabEjectable, transform.position, Quaternion.identity);
+                var comp = clon.GetComponent<ejectNSpawn>();
+
+                var lado = Mathf.CeilToInt(transform.localScale.x);
+                comp.Init(lado);
+            }
             
             //pierdo el control de la nave...
             Destroy(gameObject,selfDestruction);

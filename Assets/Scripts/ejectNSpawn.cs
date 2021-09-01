@@ -39,7 +39,7 @@ public class ejectNSpawn : MonoBehaviour
     public void Init(int lado)
     {
         transform.localScale = (lado > 0f) ? Vector3.one : Vector3.left + Vector3.up + Vector3.forward;
-        _anim.SetFloat("Side",-lado);
+        if (_anim) _anim.SetFloat("Side",-lado);
         _rb.AddForce(Vector3.right * (-lado * speed), ForceMode2D.Force);
         StartCoroutine(nameof(EnableCol), 1f);
     }

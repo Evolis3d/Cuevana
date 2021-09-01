@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabEjectable: {fileID: 8003374785285438695, guid: e2095389a45894a48b6307ab94a10208,
     type: 3}
-  selfDestruction: 3
+  selfDestruction: 4
 --- !u!114 &-7998766160999217151
 MonoBehaviour:
   m_ObjectHideFlags: 0

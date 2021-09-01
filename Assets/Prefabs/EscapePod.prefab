@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6592299932734895312}
   - component: {fileID: 4942473233674147831}
   - component: {fileID: 156341647997240135}
-  - component: {fileID: 8438194849008481658}
+  - component: {fileID: 3360376225512014247}
   m_Layer: 0
   m_Name: EscapePod
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3b6f6eae02f66794bb9b11aabf278a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.109375
---- !u!114 &8438194849008481658
+--- !u!114 &3360376225512014247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,9 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8003374785285438695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c7ed0135e0921149988999130e08637, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d38afad6c445a64a94bf58a681a2c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabMinion: {fileID: 3203982550309605561, guid: 993169dc2d88cb041b3ef150bc527e2f,
+  prefabSpawn: {fileID: 3203982550309605561, guid: 993169dc2d88cb041b3ef150bc527e2f,
     type: 3}
-  speed: 10
+  speed: 5
+  spawnTime: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7681235282692862248}
   - component: {fileID: 7681235282692862249}
   - component: {fileID: 7681235282692862262}
+  - component: {fileID: -4594342168974177179}
   - component: {fileID: -4872669748592760277}
   m_Layer: 14
   m_Name: Motocicleta_playable
@@ -148,6 +149,21 @@ MonoBehaviour:
   vel: 0
   prefabMinion: {fileID: 3203982550309605561, guid: 993169dc2d88cb041b3ef150bc527e2f,
     type: 3}
+--- !u!114 &-4594342168974177179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681235282692862263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ad7669a62a9a24e94eb1b1f3ec5f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEjectable: {fileID: 8411060890823194207, guid: ddd396ceca7ba7c48b26f7a47844c25f,
+    type: 3}
+  selfDestruction: 3
 --- !u!114 &-4872669748592760277
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class cameraFollow : MonoBehaviour
 {
     public Transform Target;
     public float factor = 2f;
-
+    private Vector3 _newPos;
+    
     private points_of_interest _poi;
     private GameObject _fallbackPOI;
+    
+    
 
     private void Awake()
     {
@@ -25,10 +27,10 @@ public class cameraFollow : MonoBehaviour
         if (Target)
         {
             var newpos = new Vector3(Target.position.x, Target.position.y, -10f);
-            var pos = Vector3.Lerp(transform.position, newpos, factor * Time.deltaTime);
-
-            transform.position = pos;
-
+            _newPos = Vector3.Lerp(transform.position, newpos, factor * Time.deltaTime);
+            
+            transform.position = _newPos;
+            
             //guardo esta posicion en el fallbackPOI
             _fallbackPOI.transform.position = Target.position;
         }

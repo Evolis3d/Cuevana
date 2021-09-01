@@ -50,7 +50,6 @@ public class points_of_interest : MonoBehaviour
         {
             puntosDeInteres.Add(el);
         }
-        
         OrdenaPreferentes();
         
         _currentPointed = 0;
@@ -58,12 +57,7 @@ public class points_of_interest : MonoBehaviour
 
     public void OrdenaPreferentes()
     {
-        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_minion ? 0 : 1)
-            .ToList();
-        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_moto ? 0 : 1)
-            .ToList();
-        puntosDeInteres = puntosDeInteres.OrderBy(x => x is control_nave ? 0 : 1)
-            .ToList();
+        puntosDeInteres.OrderBy(x => x is controllable ? 0 : 1);
     }
 
 }

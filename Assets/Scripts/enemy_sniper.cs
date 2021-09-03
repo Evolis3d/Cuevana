@@ -26,23 +26,27 @@ public class enemy_sniper : MonoBehaviour
     {
         if (_onSight && _target)
         {
-            var dir = _target.position - transform.position;
+            //fix, subo un poco la Y del target, que apunte al pecho..
+            var fix_targetPos = new Vector3(_target.position.x,_target.position.y + 0.2f,_target.position.z);
+            
+            var dir = fix_targetPos - transform.position;
+            
             transform.localScale = (dir.x > 0f) ? Vector3.one : Vector3.left + Vector3.up + Vector3.forward;
             cannon.localScale = (dir.x > 0f) ? Vector3.one : Vector3.left + Vector3.up + Vector3.forward;
             
-            var dist = Vector2.Distance(transform.position, _target.position);
+            var dist = Vector2.Distance(transform.position, fix_targetPos);
             
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             
             //magic number para asegurar que esté siempre en el rango -90,90, da igual donde mire...
             angle = (transform.localScale.x == 1f) ? angle :  180f * Mathf.Sign(angle) - angle;
 
-            Debug.Log(angle);
+            //Debug.Log(angle);
             
             //apunto con el canyon
             if (Mathf.Abs(angle) < 80f)
             {
-                cannon.transform.right = _target.position - cannon.transform.position;
+                cannon.transform.right = fix_targetPos - cannon.transform.position;
                 //si está más lejos del mínimo, le dispara 
                 if (dist > 1f)
                 {

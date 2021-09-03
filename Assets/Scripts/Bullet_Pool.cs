@@ -72,8 +72,6 @@ public class Bullet_Pool : MonoBehaviour
         
         var pos = pool[_bulletsLeft - 1].transform.position;
         
-        Debug.DrawRay(pos,dir,Color.red, 3f);
-        
         pool[_bulletsLeft-1].GetComponent<bullet>().Fire(this, pos,dir);
         pool[_bulletsLeft-1].transform.SetParent(_poolFolder.transform);
         _bulletsLeft--;

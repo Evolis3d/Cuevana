@@ -7,16 +7,16 @@ public class bullet : MonoBehaviour
     public float damage = 10f;
     public float speed = 10f;
     
-    private Collider2D col;
-    private SpriteRenderer rend;
-    private bool isMoving = true;
-    private Vector2 dir;
-    private Bullet_Pool sender;
+    private Collider2D _col;
+    private SpriteRenderer _rend;
+    private bool _isMoving = true;
+    private Vector2 _dir;
+    private Bullet_Pool _sender;
 
     private void Awake()
     {
-        col = GetComponent<Collider2D>();
-        rend = GetComponent<SpriteRenderer>();
+        _col = GetComponent<Collider2D>();
+        _rend = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -32,44 +32,45 @@ public class bullet : MonoBehaviour
 
     private void Move()
     {
-        if (isMoving)
+        if (_isMoving)
         {
             //transform.Translate(dir * (speed * Time.deltaTime));
-            transform.localPosition += (Vector3)dir * (speed * Time.deltaTime);
+            transform.localPosition += (Vector3)_dir * (speed * Time.deltaTime);
         }
     }
 
     public void Reset()
     {
-        col.enabled = false;
-        rend.enabled = false;
-        col.transform.position = Vector3.zero;
-        dir = Vector2.zero;
-        isMoving = false;
+        _col.enabled = false;
+        _rend.enabled = false;
+        _col.transform.position = Vector3.zero;
+        _dir = Vector2.zero;
+        _isMoving = false;
     }
 
     public void Fire(Bullet_Pool author, Vector3 pos = new Vector3(), Vector2 direc = new Vector2() )
     {
         if (author.Equals(null)) return;
 
-        sender = author;
-        col.enabled = true;
-        rend.enabled = true;
-        col.transform.position = pos;
-        dir = direc;
-        isMoving = true;
+        _sender = author;
+        //_col.enabled = true;
+        _rend.enabled = true;
+        _col.transform.position = pos;
+        _dir = direc;
+        _isMoving = true;
 
-        StartCoroutine(nameof(RecycleAtSecs), 10);
+        StartCoroutine(nameof(EnableCol), 0.5f);
+        StartCoroutine(nameof(RecycleAtSecs), 10f);
     }
 
     public void SetDir(Vector2 newDir)
     {
-        dir = newDir;
+        _dir = newDir;
     }
 
     public Vector2 GetDir()
     {
-        return dir;
+        return _dir;
     }
 
 
@@ -83,8 +84,14 @@ public class bullet : MonoBehaviour
 
     public void RecycleToPool()
     {
-        if (!isMoving) return;
-        if (sender) sender.Recycle(this.gameObject);
+        if (!_isMoving) return;
+        if (_sender) _sender.Recycle(this.gameObject);
+    }
+
+    IEnumerator EnableCol(float secs = 0.5f)
+    {
+        yield return new WaitForSeconds(secs);
+        _col.enabled = true;
     }
 
     IEnumerator RecycleAtSecs(float secs = 10f)

@@ -6,7 +6,7 @@ public class disparable: MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameSystems.bulletPool.Shoot(transform);
+            GameSystems.bulletPool.Shoot2(transform,transform.up);
         }
     }
 }

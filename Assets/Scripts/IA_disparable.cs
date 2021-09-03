@@ -5,10 +5,13 @@ public class IA_disparable : MonoBehaviour
     private void Start()
     { }
 
+    
+     //version principal del disparo, sólo pasamos el origen      
     public void Shoot(Transform from)
     {
         GameSystems.bulletPool.Shoot(from);
     }
+    
     
     //variedad que le pasa también el Direction
     public void Shoot(Transform from, Vector3 direction)

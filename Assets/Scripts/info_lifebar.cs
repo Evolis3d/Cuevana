@@ -25,6 +25,10 @@ public class info_lifebar : MonoBehaviour
         _anim.SetFloat(Life,amount);
 
         transform.localPosition = pos;
+        
+        //fix para los sprites que están rotados 90º, etc...
+        transform.rotation = Quaternion.identity;
+        transform.localScale = Vector3.one;
 
         StartCoroutine(nameof(_showLifeBar), duration);
     }

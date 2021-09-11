@@ -44,12 +44,11 @@ public class points_of_interest : MonoBehaviour
     public void RefreshPOI()
     {
         var lista = FindObjectsOfType<Interactivo>();
+        
         if (puntosDeInteres!= null && puntosDeInteres.Count >0) puntosDeInteres.Clear();
-        puntosDeInteres = new List<Interactivo>();
-        foreach (var el in lista)
-        {
-            puntosDeInteres.Add(el);
-        }
+
+        puntosDeInteres = lista.Distinct().ToList();
+
         OrdenaPreferentes();
         
         _currentPointed = 0;
